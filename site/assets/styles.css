@@ -355,7 +355,7 @@ h3 {
 
 .service-grid {
   display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
+  grid-template-columns: repeat(5, minmax(0, 1fr));
   gap: 16px;
 }
 
@@ -406,6 +406,24 @@ h3 {
 .service-icon.rear {
   border-radius: 28px 6px 6px 6px;
   background: linear-gradient(135deg, #fff5df, #ffd28b);
+}
+
+.service-icon.adas {
+  position: relative;
+  border-radius: 8px;
+  background: linear-gradient(135deg, #e8fbff, #80d7e8);
+}
+
+.service-icon.adas::after {
+  content: "";
+  position: absolute;
+  left: 17px;
+  top: 9px;
+  width: 14px;
+  height: 14px;
+  border: 3px solid var(--navy);
+  border-radius: 50%;
+  background: var(--white);
 }
 
 .process-section {

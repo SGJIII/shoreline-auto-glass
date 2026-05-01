@@ -64,4 +64,5 @@ Before changing the GlassBiller code, confirm:
 - Do not remove `thank-you/index.html`; GlassBiller redirects there after submission.
 - Do not replace the GlassBiller shop ID unless Shoreline moves accounts.
 - Do not publish a physical address unless Shoreline approves it.
-- Do not add unconfirmed claims like same-day service, ADAS calibration, or direct insurance billing.
+- Do not add unconfirmed claims like same-day service, direct insurance billing, warranties, or public rankings.
+- ADAS support is approved, but avoid unverifiable wording like "best in the region" unless Shoreline has proof to cite.
