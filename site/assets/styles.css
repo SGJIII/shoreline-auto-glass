@@ -540,6 +540,26 @@ h3 {
   font-size: 0.95rem;
 }
 
+.review-actions h3 {
+  margin-top: 12px;
+}
+
+.review-status {
+  display: inline-flex;
+  width: fit-content;
+  min-height: 34px;
+  align-items: center;
+  padding: 6px 10px;
+  color: #061b3a;
+  background: #fff2d6;
+  border: 1px solid #ffd38a;
+  border-radius: 8px;
+  font-size: 0.78rem;
+  font-weight: 950;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
 .contact-section {
   background: linear-gradient(180deg, var(--surface), var(--white));
 }
