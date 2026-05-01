@@ -44,6 +44,6 @@ GlassBiller is installed in `site/index.html` near the bottom of the file with:
 - `shop-id="2870"`
 - fixed quote button
 - bottom-left placement via `button-position="left"`
-- redirect to `https://www.shorelineglassco.com/thank-you/`
+- redirect to the current site's `/thank-you/` page, so staging and production both work
 
 Do not test-submit real customer data unless Shoreline approves that test.
