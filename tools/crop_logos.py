@@ -3,7 +3,7 @@ from pathlib import Path
 from PIL import Image, ImageChops
 
 
-ROOT = Path("assets/logos")
+ROOT = Path("site/assets/logos")
 FILES = [
     "shoreline-contact-info.png",
     "shoreline-logo-horizontal.png",

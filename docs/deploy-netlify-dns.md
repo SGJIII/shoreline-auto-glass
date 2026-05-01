@@ -13,7 +13,7 @@ Settings:
 ## Fastest Netlify Setup
 
 1. Create or log in to a Netlify account.
-2. For the first mock, drag this folder or `dist/shoreline-auto-glass-netlify.zip` into Netlify Drop.
+2. For the first mock, drag the `site/` folder or `dist/shoreline-auto-glass-netlify.zip` into Netlify Drop.
 3. Rename the Netlify site to something clear, such as `shoreline-auto-glass`, if available.
 4. Share the Netlify preview URL, for example `https://shoreline-auto-glass.netlify.app`.
 5. After approval, add `www.shorelineglassco.com` as the custom domain.

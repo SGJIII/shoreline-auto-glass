@@ -134,6 +134,12 @@ a {
   letter-spacing: 0.01em;
 }
 
+button.nav-quote,
+button.button {
+  font: inherit;
+  cursor: pointer;
+}
+
 .nav-call {
   border-color: var(--line);
 }
@@ -531,6 +537,13 @@ h3 {
   box-shadow: var(--shadow);
 }
 
+.contact-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+  margin-top: 26px;
+}
+
 .contact-line {
   display: block;
   padding-bottom: 12px;
@@ -703,6 +716,7 @@ h3 {
   }
 
   .hero-actions,
+  .contact-actions,
   .button,
   .nav-call,
   .nav-quote {

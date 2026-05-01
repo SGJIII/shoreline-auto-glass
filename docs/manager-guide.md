@@ -8,15 +8,15 @@ This site is intentionally simple: static files, clear sections, and no build sy
 
 Edit:
 
-- `index.html`
-- `thank-you/index.html`
+- `site/index.html`
+- `site/thank-you/index.html`
 - `content/site-copy.md`
 
 Search for `(774) 560-8440`, `+17745608440`, and `info@shorelineglassco.com`.
 
 ### Update service area
 
-Edit the `Service Area` section in `index.html` and the notes in `content/site-copy.md`.
+Edit the `Service Area` section in `site/index.html` and the notes in `content/site-copy.md`.
 
 Keep the wording service-area based unless Shoreline decides to publish a walk-in address.
 
@@ -25,14 +25,14 @@ Keep the wording service-area based unless Shoreline decides to publish a walk-i
 After Google Business Profile verification:
 
 1. Get the direct review URL from Google Business Profile.
-2. In `index.html`, find the `reviews-section`.
+2. In `site/index.html`, find the `reviews-section`.
 3. Replace the `href="#contact"` on the review button with the Google review URL.
 4. Change the button text to `Leave a Google review`.
 5. Remove the manager note below the button.
 
 ### Replace logos
 
-Put replacement images in `assets/logos/`.
+Put replacement images in `site/assets/logos/`.
 
 The main files used by the site are:
 
@@ -44,7 +44,7 @@ Use the same file names when swapping assets so the HTML does not need to change
 
 ### Edit colors and style
 
-Colors are defined at the top of `assets/styles.css` in the `:root` block.
+Colors are defined at the top of `site/assets/styles.css` in the `:root` block.
 
 Keep button colors high contrast, especially the GlassBiller light-blue quote button.
 

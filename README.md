@@ -4,11 +4,11 @@ Static lead-generation website for `www.shorelineglassco.com`.
 
 ## What is included
 
-- `index.html` - the full public homepage.
-- `thank-you/index.html` - redirect target after GlassBiller quote submission.
-- `assets/styles.css` - all site styling.
-- `assets/main.js` - mobile menu and current year behavior.
-- `assets/logos/` - Shoreline brand assets copied from the provided files.
+- `site/index.html` - the full public homepage.
+- `site/thank-you/index.html` - redirect target after GlassBiller quote submission.
+- `site/assets/styles.css` - all site styling.
+- `site/assets/main.js` - mobile menu and current year behavior.
+- `site/assets/logos/` - Shoreline brand assets copied from the provided files.
 - `netlify.toml` and `_redirects` - Netlify deploy configuration.
 - `docs/` - manager and deployment handoff notes.
 - `content/site-copy.md` - plain-English copy reference for maintainers.
@@ -39,7 +39,7 @@ Then open:
 
 ## Critical integrations
 
-GlassBiller is installed in `index.html` near the bottom of the file with:
+GlassBiller is installed in `site/index.html` near the bottom of the file with:
 
 - `shop-id="2870"`
 - fixed quote button
