@@ -341,6 +341,17 @@ h3 {
   box-shadow: inset 13px 0 0 rgba(39, 168, 200, 0.28);
 }
 
+.service-icon.windshield,
+.service-icon.rear {
+  width: 64px;
+  height: 34px;
+  border-radius: 7px;
+  background: linear-gradient(135deg, #d9f3ff 0%, #90cdf4 54%, #4fb5d6 100%);
+  box-shadow:
+    inset 12px 0 0 rgba(255, 255, 255, 0.24),
+    inset 0 -5px 0 rgba(6, 27, 58, 0.08);
+}
+
 .service-icon.chip {
   position: relative;
 }
@@ -362,9 +373,7 @@ h3 {
 }
 
 .service-icon.rear {
-  border-radius: 7px;
-  background: linear-gradient(135deg, #0a1d33, #2e6f9d);
-  box-shadow: inset 12px 0 0 rgba(144, 205, 244, 0.18);
+  background: linear-gradient(135deg, #b6e4f8 0%, #72bfe4 54%, #2d93bd 100%);
 }
 
 .service-icon.adas {
