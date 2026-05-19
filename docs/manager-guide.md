@@ -14,6 +14,8 @@ Edit:
 
 Search for `(774) 560-8440`, `+17745608440`, and `info@shorelineglassco.com`.
 
+The privacy/SMS terms page also includes contact details at `site/privacy/index.html`.
+
 ### Update service area
 
 Edit the `Service Area` section in `site/index.html` and the notes in `content/site-copy.md`.
@@ -48,6 +50,12 @@ Colors are defined at the top of `site/assets/styles.css` in the `:root` block.
 
 Keep button colors high contrast, especially the GlassBiller light-blue quote button.
 
+### Update Privacy Policy or SMS terms
+
+Edit `site/privacy/index.html`.
+
+Keep the SMS section visible and public at `/privacy/`. If Shoreline changes texting providers or use cases, update the message types, opt-out instructions, and support contact details before submitting A2P/texting paperwork.
+
 ## Lead Flow
 
 The floating quote button is loaded from GlassBiller. Leads should appear in the GlassBiller leads dashboard for shop ID `2870`.
@@ -58,6 +66,7 @@ Before changing the GlassBiller code, confirm:
 - Required fields
 - Button placement
 - Redirect URL
+- SMS opt-in checkbox language and whether consent is stored with each lead
 
 ## What Not To Change Casually
 
