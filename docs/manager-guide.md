@@ -68,6 +68,8 @@ Before changing the GlassBiller code, confirm:
 - Redirect URL
 - SMS opt-in checkbox language and whether consent is stored with each lead
 
+The site currently shows an SMS opt-in checkbox before opening the GlassBiller iframe and passes `sms_opt_in=true` plus a timestamp through the lead source URL. A true checkbox inside the GlassBiller-hosted iframe must be added by GlassBiller.
+
 ## What Not To Change Casually
 
 - Do not remove `thank-you/index.html`; GlassBiller redirects there after submission.
