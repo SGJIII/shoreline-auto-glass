@@ -68,7 +68,7 @@ Before changing the GlassBiller code, confirm:
 - Redirect URL
 - SMS opt-in checkbox language and whether consent is stored with each lead
 
-The site currently shows an SMS opt-in checkbox before opening the GlassBiller iframe and passes `sms_opt_in=true` plus a timestamp through the lead source URL. A true checkbox inside the GlassBiller-hosted iframe must be added by GlassBiller.
+The site currently asks for SMS opt-in after quote submission on `site/thank-you/index.html`. The opt-in is a Netlify form named `sms-opt-in`; check Netlify Forms for submissions before sending SMS messages. A true checkbox inside the GlassBiller-hosted iframe must be added by GlassBiller if Shoreline wants consent stored natively with the GlassBiller lead.
 
 ## What Not To Change Casually
 
