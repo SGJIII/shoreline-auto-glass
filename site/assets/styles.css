@@ -724,31 +724,9 @@ h3 {
   background: var(--surface);
 }
 
-.sms-opt-in-heading h2 {
-  margin-bottom: 6px;
-  font-size: clamp(1.45rem, 3vw, 2.2rem);
-}
-
-.sms-opt-in-heading p {
-  margin-bottom: 8px;
-  font-size: 1rem;
-}
-
 .sms-opt-in-form label {
   color: var(--navy);
   font-weight: 900;
-}
-
-.sms-opt-in-form input[type="text"],
-.sms-opt-in-form input[type="tel"] {
-  min-height: 46px;
-  width: 100%;
-  padding: 10px 12px;
-  color: var(--ink);
-  border: 1px solid var(--line);
-  border-radius: 8px;
-  background: var(--white);
-  font: inherit;
 }
 
 .sms-opt-in-check {
@@ -756,7 +734,6 @@ h3 {
   grid-template-columns: 24px 1fr;
   gap: 12px;
   align-items: start;
-  margin-top: 8px;
 }
 
 .sms-opt-in-check input {
@@ -766,22 +743,9 @@ h3 {
   accent-color: var(--navy);
 }
 
-.sms-opt-in-check span,
-.sms-opt-in-note {
+.sms-opt-in-check span {
   color: var(--muted);
   font-weight: 500;
-}
-
-.sms-opt-in-note {
-  margin: 0;
-  font-size: 0.95rem;
-}
-
-.sms-opt-in-note a {
-  color: var(--navy);
-  font-weight: 900;
-  text-decoration: underline;
-  text-underline-offset: 3px;
 }
 
 @media (max-width: 920px) {
