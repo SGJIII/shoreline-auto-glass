@@ -67,6 +67,24 @@ Keep button colors high contrast, especially the GlassBiller light-blue quote bu
 
 When changing `site/assets/styles.css`, `site/assets/main.js`, or `site/assets/quote-form.js`, also bump the `?v=YYYYMMDD` version in the HTML files that load that asset. This makes browsers fetch the fresh file after Netlify deploys.
 
+### Update analytics tracking
+
+Google Analytics 4 is installed on every public page with measurement ID `G-HD12WQSBNM`.
+
+Event tracking lives in `site/assets/analytics.js`. Current tracked events:
+
+- `quote_request_started` when someone clicks a Get a quote button.
+- `quote_request_submitted` when GlassBiller redirects to `/thank-you/`.
+- `generate_lead` when GlassBiller redirects to `/thank-you/`.
+- `phone_click` when someone taps a phone link.
+- `email_click` when someone taps an email link.
+- `google_review_link_click` when someone opens a Google review/listing link.
+- `sms_opt_in_submitted` when the SMS opt-in form returns with `?sms=received`.
+
+Because the GlassBiller form is loaded in a third-party script/iframe, the most reliable quote-submission signal is the `/thank-you/` redirect after submission.
+
+When changing `site/assets/analytics.js`, bump the `?v=YYYYMMDD` version in the HTML files that load it.
+
 ### Update Privacy Policy or SMS terms
 
 Edit `site/privacy/index.html`.

@@ -10,6 +10,7 @@ Static lead-generation website for `www.shorelineglassco.com`.
 - `site/assets/styles.css` - all site styling.
 - `site/assets/main.js` - mobile menu and current year behavior.
 - `site/assets/quote-form.js` - shared GlassBiller quote button embed.
+- `site/assets/analytics.js` - Google Analytics tag setup and event tracking.
 - `site/assets/logos/` - Shoreline brand assets copied from the provided files.
 - `netlify.toml` and `_redirects` - Netlify deploy configuration.
 - `docs/` - manager and deployment handoff notes.
@@ -49,3 +50,5 @@ GlassBiller is installed through `site/assets/quote-form.js` with:
 - redirect to the current site's `/thank-you/` page, so staging and production both work
 
 Do not test-submit real customer data unless Shoreline approves that test.
+
+Google Analytics 4 is installed with measurement ID `G-HD12WQSBNM`. Event tracking lives in `site/assets/analytics.js`.
