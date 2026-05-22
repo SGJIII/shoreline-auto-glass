@@ -469,7 +469,6 @@ h3 {
 }
 
 .area-layout,
-.reviews-layout,
 .contact-layout {
   display: grid;
   grid-template-columns: minmax(0, 1fr) minmax(320px, 0.75fr);
@@ -593,44 +592,45 @@ h3 {
   background: var(--white);
 }
 
-.review-actions {
-  padding: 30px;
-  border-left: 6px solid var(--amber);
+.reviews-layout {
+  display: grid;
+  gap: 10px;
+}
+
+.review-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 16px;
+}
+
+.review-card {
+  min-height: 210px;
+  padding: 26px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
   background: var(--surface);
-  border-radius: 8px;
 }
 
-.review-actions p {
-  margin: 18px 0 0;
+.review-stars {
+  margin-bottom: 18px;
+  color: var(--amber);
+  font-size: 1.2rem;
+  letter-spacing: 0.04em;
+}
+
+.review-card p {
+  margin-bottom: 20px;
+  color: var(--ink);
+  font-size: 1.04rem;
+}
+
+.review-card span {
   color: var(--muted);
-  font-size: 0.95rem;
+  font-weight: 800;
 }
 
-.review-buttons {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 14px;
-  margin-top: 22px;
-}
-
-.review-actions h3 {
-  margin-top: 12px;
-}
-
-.review-status {
-  display: inline-flex;
-  width: fit-content;
-  min-height: 34px;
-  align-items: center;
-  padding: 6px 10px;
-  color: #061b3a;
-  background: #fff2d6;
-  border: 1px solid #ffd38a;
-  border-radius: 8px;
-  font-size: 0.78rem;
-  font-weight: 950;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
+.review-empty {
+  border-style: dashed;
 }
 
 .contact-section {
@@ -915,7 +915,8 @@ h3 {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
-  .location-services {
+  .location-services,
+  .review-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
@@ -948,6 +949,7 @@ h3 {
 
   .service-grid,
   .location-services,
+  .review-grid,
   .local-list,
   .area-panel ul {
     grid-template-columns: 1fr;

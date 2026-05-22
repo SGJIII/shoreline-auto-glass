@@ -42,6 +42,4 @@ The page should stay helpful and local. Mention mobile service, windshield repla
 
 ## Review Section
 
-The Google Business Profile is live and customers can leave reviews or read current reviews.
-
-Current site copy asks happy customers to share their Shoreline experience. The primary CTA links to the direct Google review URL: `https://g.page/r/CUki0l1Gt5-FEBI/review`. The secondary CTA opens the public Google listing with Place ID `ChIJuVwlzHVX4E4RSSLSXUa3n4U` so visitors can read reviews on Google.
+The reviews section is display-only. Until real Google reviews are published, it shows a simple "No published Google reviews yet" card. Add real customer review cards as Google reviews are published; do not show review-request buttons in this section.

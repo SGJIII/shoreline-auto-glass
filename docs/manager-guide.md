@@ -35,20 +35,17 @@ If the page URL changes, update:
 - `site/_redirects`
 - Footer links in `site/index.html` and the Cape Cod page
 
-### Update Google review link
+### Update displayed reviews
 
-The reviews section is live and includes two Google links:
+The reviews section on the homepage is display-only.
 
-- `Leave a Google review` opens the direct review form.
-- `Read Google reviews` opens the public Google listing.
+To add a Google review:
 
-If Google ever changes the review URL:
-
-1. Get the latest direct review URL from Google Business Profile.
-2. In `site/index.html`, find the `reviews-section`.
-3. Replace `https://g.page/r/CUki0l1Gt5-FEBI/review` on the `Leave a Google review` button with the new direct Google review URL.
-4. If the Google listing link changes, update the `Read Google reviews` URL too.
-5. Keep `target="_blank"` and `rel="noopener"` on both links.
+1. In `site/index.html`, find the `reviews-section`.
+2. Replace the placeholder `review-card` with real review cards.
+3. Keep review excerpts short, accurate, and copied exactly from the customer review.
+4. Include the customer's public Google display name and the review source/date when available.
+5. Do not add a review-request button inside this section.
 
 ### Replace logos
 
