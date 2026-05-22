@@ -24,14 +24,18 @@ Keep the wording service-area based unless Shoreline decides to publish a walk-i
 
 ### Update Google review link
 
-The reviews section is live and links customers to the direct Shoreline Google review page.
+The reviews section is live and includes two Google links:
+
+- `Leave a Google review` opens the direct review form.
+- `Read Google reviews` opens the public Google listing.
 
 If Google ever changes the review URL:
 
 1. Get the latest direct review URL from Google Business Profile.
 2. In `site/index.html`, find the `reviews-section`.
 3. Replace `https://g.page/r/CUki0l1Gt5-FEBI/review` on the `Leave a Google review` button with the new direct Google review URL.
-4. Keep `target="_blank"` and `rel="noopener"` on the link.
+4. If the Google listing link changes, update the `Read Google reviews` URL too.
+5. Keep `target="_blank"` and `rel="noopener"` on both links.
 
 ### Replace logos
 

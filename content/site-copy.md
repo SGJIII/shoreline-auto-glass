@@ -30,6 +30,6 @@ Shoreline can mention technician experience and ADAS-related work. Avoid unverif
 
 ## Review Section
 
-The Google Business Profile is live and customers can leave reviews.
+The Google Business Profile is live and customers can leave reviews or read current reviews.
 
-Current site copy asks happy customers to share their Shoreline experience and links to the direct Google review URL: `https://g.page/r/CUki0l1Gt5-FEBI/review`.
+Current site copy asks happy customers to share their Shoreline experience. The primary CTA links to the direct Google review URL: `https://g.page/r/CUki0l1Gt5-FEBI/review`. The secondary CTA opens the public Google listing with Place ID `ChIJuVwlzHVX4E4RSSLSXUa3n4U` so visitors can read reviews on Google.
