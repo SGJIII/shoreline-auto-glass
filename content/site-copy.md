@@ -30,4 +30,6 @@ Shoreline can mention technician experience and ADAS-related work. Avoid unverif
 
 ## Review Section
 
-Current launch copy says that the Google Business Profile is being set up. Once verified, replace the review CTA with the direct Google review link.
+The Google Business Profile is live and customers can leave reviews.
+
+Current site copy asks happy customers to share their Shoreline experience and links to a Google Maps search for `Shoreline Auto Glass 774 560 8440`. Once Google Business Profile shows the exact direct review URL in the dashboard, replace the CTA URL with that direct review link.

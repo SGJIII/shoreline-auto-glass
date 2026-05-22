@@ -22,15 +22,16 @@ Edit the `Service Area` section in `site/index.html` and the notes in `content/s
 
 Keep the wording service-area based unless Shoreline decides to publish a walk-in address.
 
-### Add Google review link
+### Update Google review link
 
-After Google Business Profile verification:
+The reviews section is live and currently links customers to the Shoreline Google listing search.
+
+To use Google's exact direct review link:
 
 1. Get the direct review URL from Google Business Profile.
 2. In `site/index.html`, find the `reviews-section`.
-3. Replace the `href="#contact"` on the review button with the Google review URL.
-4. Change the button text to `Leave a Google review`.
-5. Remove the manager note below the button.
+3. Replace the Google Maps search URL on the `Leave a Google review` button with the direct Google review URL.
+4. Keep `target="_blank"` and `rel="noopener"` on the link.
 
 ### Replace logos
 
