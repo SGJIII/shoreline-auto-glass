@@ -39,6 +39,13 @@ a {
   text-decoration: none;
 }
 
+.text-link {
+  color: var(--navy);
+  font-weight: 900;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
 .skip-link {
   position: absolute;
   left: 16px;
@@ -504,6 +511,84 @@ h3 {
   font-weight: 800;
 }
 
+.location-hero {
+  padding: 92px 0 76px;
+  color: var(--white);
+  background:
+    linear-gradient(90deg, rgba(6, 27, 58, 0.96), rgba(6, 27, 58, 0.78)),
+    linear-gradient(135deg, #061b3a, #0f4f7c 58%, #34b4d5);
+}
+
+.location-hero h1 {
+  margin-bottom: 20px;
+  font-size: clamp(2.6rem, 6vw, 5.8rem);
+}
+
+.location-hero p:not(.eyebrow) {
+  max-width: 760px;
+  color: rgba(255, 255, 255, 0.84);
+  font-size: clamp(1.05rem, 2vw, 1.32rem);
+}
+
+.location-services {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
+.location-copy {
+  display: grid;
+  grid-template-columns: minmax(0, 0.95fr) minmax(320px, 0.7fr);
+  gap: 48px;
+  align-items: start;
+}
+
+.location-copy p,
+.location-copy li {
+  color: var(--muted);
+  font-size: 1.06rem;
+}
+
+.location-copy ul {
+  display: grid;
+  gap: 10px;
+  margin: 20px 0 0;
+  padding-left: 22px;
+}
+
+.local-list {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px;
+  margin: 18px 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.local-list li {
+  min-height: 40px;
+  padding: 9px 10px;
+  color: var(--navy);
+  background: var(--surface);
+  border-radius: 8px;
+  font-weight: 800;
+}
+
+.faq-list {
+  display: grid;
+  gap: 16px;
+}
+
+.faq-item {
+  padding: 24px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: var(--white);
+}
+
+.faq-item p {
+  margin: 0;
+  color: var(--muted);
+}
+
 .reviews-section {
   background: var(--white);
 }
@@ -820,12 +905,17 @@ h3 {
   .intro-grid,
   .process-grid,
   .area-layout,
+  .location-copy,
   .reviews-layout,
   .contact-layout {
     grid-template-columns: 1fr;
   }
 
   .service-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .location-services {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
@@ -857,6 +947,8 @@ h3 {
   }
 
   .service-grid,
+  .location-services,
+  .local-list,
   .area-panel ul {
     grid-template-columns: 1fr;
   }

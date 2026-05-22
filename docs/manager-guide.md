@@ -9,6 +9,7 @@ This site is intentionally simple: static files, clear sections, and no build sy
 Edit:
 
 - `site/index.html`
+- `site/cape-cod-windshield-replacement/index.html`
 - `site/thank-you/index.html`
 - `content/site-copy.md`
 
@@ -18,9 +19,21 @@ The privacy/SMS terms page also includes contact details at `site/privacy/index.
 
 ### Update service area
 
-Edit the `Service Area` section in `site/index.html` and the notes in `content/site-copy.md`.
+Edit the `Service Area` section in `site/index.html`, the Cape Cod landing page at `site/cape-cod-windshield-replacement/index.html`, and the notes in `content/site-copy.md`.
 
 Keep the wording service-area based unless Shoreline decides to publish a walk-in address.
+
+### Update Cape Cod SEO page
+
+The Cape Cod landing page lives at `site/cape-cod-windshield-replacement/index.html`.
+
+Keep the page focused on real customer needs: mobile windshield replacement, Cape Cod auto glass, chip repair, door glass, rear glass, ADAS calibration, service towns, and quote scheduling. Do not repeat the same phrase unnaturally; write for customers first.
+
+If the page URL changes, update:
+
+- `site/sitemap.xml`
+- `site/_redirects`
+- Footer links in `site/index.html` and the Cape Cod page
 
 ### Update Google review link
 
@@ -55,6 +68,8 @@ Colors are defined at the top of `site/assets/styles.css` in the `:root` block.
 
 Keep button colors high contrast, especially the GlassBiller light-blue quote button.
 
+When changing `site/assets/styles.css`, `site/assets/main.js`, or `site/assets/quote-form.js`, also bump the `?v=YYYYMMDD` version in the HTML files that load that asset. This makes browsers fetch the fresh file after Netlify deploys.
+
 ### Update Privacy Policy or SMS terms
 
 Edit `site/privacy/index.html`.
@@ -63,7 +78,7 @@ Keep the SMS section visible and public at `/privacy/`. If Shoreline changes tex
 
 ## Lead Flow
 
-The floating quote button is loaded from GlassBiller. Leads should appear in the GlassBiller leads dashboard for shop ID `2870`.
+The floating quote button is loaded from GlassBiller through `site/assets/quote-form.js`. Leads should appear in the GlassBiller leads dashboard for shop ID `2870`.
 
 Before changing the GlassBiller code, confirm:
 
