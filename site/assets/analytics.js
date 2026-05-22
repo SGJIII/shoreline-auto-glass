@@ -35,68 +35,105 @@
     trackEvent,
   };
 
+  function safeSessionStorage() {
+    try {
+      return window.sessionStorage;
+    } catch (error) {
+      return null;
+    }
+  }
+
+  function hasTrackedQuoteSubmission(storage) {
+    if (!storage) {
+      return false;
+    }
+
+    try {
+      return Boolean(storage.getItem("shoreline_quote_submitted_tracked"));
+    } catch (error) {
+      return false;
+    }
+  }
+
+  function markQuoteSubmissionTracked(storage) {
+    if (!storage) {
+      return;
+    }
+
+    try {
+      storage.setItem("shoreline_quote_submitted_tracked", "true");
+    } catch (error) {
+      // Analytics should never interrupt the thank-you page experience.
+    }
+  }
+
   document.addEventListener("DOMContentLoaded", () => {
-    const path = window.location.pathname;
-    const searchParams = new URLSearchParams(window.location.search);
+    try {
+      const path = window.location.pathname;
+      const searchParams = new URLSearchParams(window.location.search);
+      const storage = safeSessionStorage();
 
-    if (path.startsWith("/thank-you/") && !sessionStorage.getItem("shoreline_quote_submitted_tracked")) {
-      sessionStorage.setItem("shoreline_quote_submitted_tracked", String(Date.now()));
+      if (path.startsWith("/thank-you/") && !hasTrackedQuoteSubmission(storage)) {
+        markQuoteSubmissionTracked(storage);
 
-      trackEvent("quote_request_submitted", {
-        event_category: "lead",
-        method: "glassbiller_redirect",
-      });
-
-      trackEvent("generate_lead", {
-        event_category: "lead",
-        method: "glassbiller_redirect",
-      });
-    }
-
-    if (path.startsWith("/thank-you/") && searchParams.get("sms") === "received") {
-      trackEvent("sms_opt_in_submitted", {
-        event_category: "lead",
-        method: "netlify_form",
-      });
-    }
-
-    document.querySelectorAll(".quote-trigger, .gb-get-quote-button").forEach((element) => {
-      element.addEventListener("click", () => {
-        trackEvent("quote_request_started", {
+        trackEvent("quote_request_submitted", {
           event_category: "lead",
-          link_text: eventLabel(element),
+          method: "glassbiller_redirect",
         });
-      });
-    });
 
-    document.querySelectorAll('a[href^="tel:"]').forEach((link) => {
-      link.addEventListener("click", () => {
-        trackEvent("phone_click", {
-          event_category: "contact",
-          phone_number: link.getAttribute("href").replace("tel:", ""),
-          link_text: eventLabel(link),
+        trackEvent("generate_lead", {
+          event_category: "lead",
+          method: "glassbiller_redirect",
         });
-      });
-    });
+      }
 
-    document.querySelectorAll('a[href^="mailto:"]').forEach((link) => {
-      link.addEventListener("click", () => {
-        trackEvent("email_click", {
-          event_category: "contact",
-          email_address: link.getAttribute("href").replace("mailto:", ""),
-          link_text: eventLabel(link),
+      if (path.startsWith("/thank-you/") && searchParams.get("sms") === "received") {
+        trackEvent("sms_opt_in_submitted", {
+          event_category: "lead",
+          method: "netlify_form",
         });
-      });
-    });
+      }
 
-    document.querySelectorAll('a[href*="google.com/maps"], a[href*="g.page/"]').forEach((link) => {
-      link.addEventListener("click", () => {
-        trackEvent("google_review_link_click", {
-          event_category: "reviews",
-          link_url: link.href,
-          link_text: eventLabel(link),
+      document.querySelectorAll(".quote-trigger, .gb-get-quote-button").forEach((element) => {
+        element.addEventListener("click", () => {
+          trackEvent("quote_request_started", {
+            event_category: "lead",
+            link_text: eventLabel(element),
+          });
         });
       });
-    });
+
+      document.querySelectorAll('a[href^="tel:"]').forEach((link) => {
+        link.addEventListener("click", () => {
+          trackEvent("phone_click", {
+            event_category: "contact",
+            phone_number: link.getAttribute("href").replace("tel:", ""),
+            link_text: eventLabel(link),
+          });
+        });
+      });
+
+      document.querySelectorAll('a[href^="mailto:"]').forEach((link) => {
+        link.addEventListener("click", () => {
+          trackEvent("email_click", {
+            event_category: "contact",
+            email_address: link.getAttribute("href").replace("mailto:", ""),
+            link_text: eventLabel(link),
+          });
+        });
+      });
+
+      document.querySelectorAll('a[href*="google.com/maps"], a[href*="g.page/"]').forEach((link) => {
+        link.addEventListener("click", () => {
+          trackEvent("google_review_link_click", {
+            event_category: "reviews",
+            link_url: link.href,
+            link_text: eventLabel(link),
+          });
+        });
+      });
+    } catch (error) {
+      // Ignore analytics failures so contact and thank-you pages keep working.
+    }
   });
 })();
