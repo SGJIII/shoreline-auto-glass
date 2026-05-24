@@ -162,6 +162,7 @@ button.button {
 }
 
 .nav-call {
+  display: none;
   border-color: rgba(6, 27, 58, 0.18);
   background: rgba(255, 255, 255, 0.82);
 }
@@ -961,6 +962,10 @@ h3 {
 
   .nav-links a {
     width: 100%;
+  }
+
+  .nav-call {
+    display: inline-flex;
   }
 
   .legal-nav a {
