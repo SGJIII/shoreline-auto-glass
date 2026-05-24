@@ -6,6 +6,10 @@ Static lead-generation website for `www.shorelineglassco.com`.
 
 - `site/index.html` - the full public homepage.
 - `site/cape-cod-windshield-replacement/index.html` - Cape Cod SEO landing page.
+- `site/south-coast-auto-glass/index.html` - South Coast regional SEO landing page.
+- `site/south-shore-auto-glass/index.html` - South Shore regional SEO landing page.
+- `site/marthas-vineyard-auto-glass/index.html` - Martha's Vineyard regional SEO landing page.
+- `site/nantucket-auto-glass/index.html` - Nantucket regional SEO landing page.
 - `site/thank-you/index.html` - redirect target after GlassBiller quote submission.
 - `site/assets/styles.css` - all site styling.
 - `site/assets/main.js` - mobile menu and current year behavior.

@@ -35,6 +35,18 @@ If the page URL changes, update:
 - `site/_redirects`
 - Footer links in `site/index.html` and the Cape Cod page
 
+### Update regional SEO pages
+
+The main regional pages are:
+
+- `site/cape-cod-windshield-replacement/index.html`
+- `site/south-coast-auto-glass/index.html`
+- `site/south-shore-auto-glass/index.html`
+- `site/marthas-vineyard-auto-glass/index.html`
+- `site/nantucket-auto-glass/index.html`
+
+Each regional page should stay useful and specific to that area. Avoid creating lots of copied town pages with only the place name changed. If a regional page URL, title, or menu label changes, update the Regions dropdown, footer links, `site/sitemap.xml`, and `site/_redirects`.
+
 ### Update displayed reviews
 
 The reviews section on the homepage is display-only.
