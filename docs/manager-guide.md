@@ -67,7 +67,7 @@ The main files used by the site are:
 
 - `shoreline-logo-horizontal.png`
 - `shoreline-full-logo-footer.png`
-- `shoreline-favicon.png`
+- `shoreline-favicon-white.png`
 - `shoreline-logo-hero.png`
 - `shoreline-logo-wordmark.png`
 
