@@ -10,9 +10,9 @@
     <meta name="theme-color" content="#061b3a">
     <link rel="icon" type="image/png" href="/assets/logos/shoreline-favicon-white.png">
     <link rel="apple-touch-icon" href="/assets/logos/shoreline-favicon-white.png">
-    <link rel="stylesheet" href="/assets/styles.css?v=20260524c">
+    <link rel="stylesheet" href="/assets/styles.css?v=20260524d">
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-HD12WQSBNM"></script>
-    <script src="/assets/analytics.js?v=20260522b"></script>
+    <script src="/assets/analytics.js?v=20260524a"></script>
   </head>
   <body class="thank-you-page">
     <main class="thanks-shell">
@@ -20,9 +20,9 @@
         <img src="/assets/logos/shoreline-logo-horizontal.png" alt="Shoreline Auto Glass">
       </a>
       <section class="thanks-card">
-        <p class="eyebrow">Quote request received</p>
-        <h1>Thanks. Shoreline will follow up soon.</h1>
-        <p>
+        <p class="eyebrow" data-thanks-eyebrow>Quote request received</p>
+        <h1 data-thanks-title>Thanks. Shoreline will follow up soon.</h1>
+        <p data-thanks-message>
           Your request has been sent to the leads dashboard. If your glass issue is urgent or you need to add details, call Shoreline Auto Glass.
         </p>
         <form class="sms-opt-in-form" name="sms-opt-in" method="POST" data-netlify="true" action="/thank-you/?sms=received">
@@ -41,5 +41,30 @@
         </div>
       </section>
     </main>
+    <script>
+      (function () {
+        const params = new URLSearchParams(window.location.search);
+
+        if (params.get("fleet") !== "received") {
+          return;
+        }
+
+        const eyebrow = document.querySelector("[data-thanks-eyebrow]");
+        const title = document.querySelector("[data-thanks-title]");
+        const message = document.querySelector("[data-thanks-message]");
+
+        if (eyebrow) {
+          eyebrow.textContent = "Fleet request received";
+        }
+
+        if (title) {
+          title.textContent = "Thanks. Shoreline will review the details.";
+        }
+
+        if (message) {
+          message.textContent = "Your fleet or dealership request has been sent. If the vehicle is urgent or you need to add details, call Shoreline Auto Glass.";
+        }
+      })();
+    </script>
   </body>
 </html>

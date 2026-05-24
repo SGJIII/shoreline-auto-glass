@@ -73,7 +73,7 @@
       const searchParams = new URLSearchParams(window.location.search);
       const storage = safeSessionStorage();
 
-      if (path.startsWith("/thank-you/") && !hasTrackedQuoteSubmission(storage)) {
+      if (path.startsWith("/thank-you/") && !searchParams.get("fleet") && !hasTrackedQuoteSubmission(storage)) {
         markQuoteSubmissionTracked(storage);
 
         trackEvent("quote_request_submitted", {
@@ -91,6 +91,18 @@
         trackEvent("sms_opt_in_submitted", {
           event_category: "lead",
           method: "netlify_form",
+        });
+      }
+
+      if (path.startsWith("/thank-you/") && searchParams.get("fleet") === "received") {
+        trackEvent("fleet_support_submitted", {
+          event_category: "lead",
+          method: "netlify_form",
+        });
+
+        trackEvent("generate_lead", {
+          event_category: "lead",
+          method: "fleet_support_form",
         });
       }
 
