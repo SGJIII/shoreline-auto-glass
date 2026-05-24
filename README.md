@@ -44,6 +44,46 @@ Then open:
 
 `http://127.0.0.1:4173/`
 
+## Tests
+
+Run the no-browser local test suite:
+
+```bash
+npm test
+```
+
+If `npm` is not installed, run the same test suite directly:
+
+```bash
+node --test tests/site.test.mjs
+```
+
+This checks internal links, local assets, form actions, redirect targets, sitemap URLs, JSON-LD, JavaScript syntax, key analytics events, review copy, certification copy, and known bad text. It intentionally does not submit the GlassBiller form.
+
+Run a production smoke test without a browser:
+
+```bash
+npm run test:live
+```
+
+If `npm` is not installed:
+
+```bash
+node tests/live-smoke.mjs
+```
+
+Set `SITE_URL` to test another deployed URL:
+
+```bash
+SITE_URL=https://shoreline-autoglass.netlify.app npm run test:live
+```
+
+Or:
+
+```bash
+SITE_URL=https://shoreline-autoglass.netlify.app node tests/live-smoke.mjs
+```
+
 ## Critical integrations
 
 GlassBiller is installed through `site/assets/quote-form.js` with:
