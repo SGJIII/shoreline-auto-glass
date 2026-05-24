@@ -16,7 +16,7 @@ Use this file as the plain-English source for future edits.
 
 Clear vision. Safe journeys.
 
-We provide convenient, mobile auto glass and windshield replacement services that come directly to you across Cape Cod, Southeastern Massachusetts, and the Islands—whether you're at home, work, or on the road. From replacements and repairs to ADAS recalibration, we handle all types of auto glass with precision and care.
+We provide convenient, mobile auto glass and windshield replacement services that come directly to you across Cape Cod, Southeastern Massachusetts, and the Islands, whether you're at home, work, or on the road. From replacements and repairs to ADAS recalibration, we handle all types of auto glass with precision and care.
 
 ## Services
 
