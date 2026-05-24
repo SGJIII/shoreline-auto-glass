@@ -15,7 +15,7 @@ Static lead-generation website for `www.shorelineglassco.com`.
 - `site/assets/main.js` - mobile menu and current year behavior.
 - `site/assets/quote-form.js` - shared GlassBiller quote button embed.
 - `site/assets/analytics.js` - Google Analytics tag setup and event tracking.
-- `site/assets/logos/` - Shoreline brand assets copied from the provided files.
+- `site/assets/logos/` - Shoreline brand assets, including the favicon and footer full-logo artwork.
 - `netlify.toml` and `_redirects` - Netlify deploy configuration.
 - `docs/` - manager and deployment handoff notes.
 - `content/site-copy.md` - plain-English copy reference for maintainers.
