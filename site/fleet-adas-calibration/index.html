@@ -16,7 +16,7 @@
     <link rel="apple-touch-icon" href="/assets/logos/shoreline-favicon-white.png">
     <link rel="stylesheet" href="/assets/styles.css?v=20260524e">
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-HD12WQSBNM"></script>
-    <script src="/assets/analytics.js?v=20260524a"></script>
+    <script src="/assets/analytics.js?v=20260524b"></script>
     <script type="application/ld+json">
       {
         "@context": "https://schema.org",
@@ -288,8 +288,9 @@
               <a class="button secondary" href="tel:+17745608440">Call Shoreline</a>
             </div>
           </div>
-          <form class="fleet-form" name="fleet-support" method="POST" data-netlify="true" netlify-honeypot="bot-field" action="/thank-you/?fleet=received">
+          <form class="fleet-form" name="fleet-support" method="POST" data-netlify="true" data-netlify-ajax="true" netlify-honeypot="bot-field" action="/fleet-request-received/">
             <input type="hidden" name="form-name" value="fleet-support">
+            <input type="hidden" name="send_to" value="blake.farnsworth@shorelineglassco.com">
             <label class="hidden">
               Do not fill this out
               <input name="bot-field" autocomplete="off">
@@ -385,7 +386,7 @@
       </div>
     </footer>
 
-    <script src="/assets/main.js?v=20260524a"></script>
+    <script src="/assets/main.js?v=20260524b"></script>
     <script src="/assets/quote-form.js?v=20260522"></script>
   </body>
 </html>

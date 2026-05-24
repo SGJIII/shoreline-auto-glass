@@ -106,6 +106,18 @@
         });
       }
 
+      if (path.startsWith("/fleet-request-received/")) {
+        trackEvent("fleet_support_submitted", {
+          event_category: "lead",
+          method: "netlify_form",
+        });
+
+        trackEvent("generate_lead", {
+          event_category: "lead",
+          method: "fleet_support_form",
+        });
+      }
+
       document.querySelectorAll(".quote-trigger, .gb-get-quote-button").forEach((element) => {
         element.addEventListener("click", () => {
           trackEvent("quote_request_started", {
