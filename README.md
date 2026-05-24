@@ -10,6 +10,10 @@ Static lead-generation website for `www.shorelineglassco.com`.
 - `site/south-shore-auto-glass/index.html` - South Shore regional SEO landing page.
 - `site/marthas-vineyard-auto-glass/index.html` - Martha's Vineyard regional SEO landing page.
 - `site/nantucket-auto-glass/index.html` - Nantucket regional SEO landing page.
+- `site/adas-calibration/index.html` - ADAS calibration SEO landing page.
+- `site/fleet-adas-calibration/index.html` - fleet, dealership, and account calibration lead page.
+- `site/insurance/index.html` - insurance claim help page for customers who want Shoreline by name.
+- `site/fleet-request-received/index.html` - redirect target after fleet form submission.
 - `site/thank-you/index.html` - redirect target after GlassBiller quote submission.
 - `site/assets/styles.css` - all site styling.
 - `site/assets/main.js` - mobile menu and current year behavior.

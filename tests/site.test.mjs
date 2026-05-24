@@ -15,6 +15,7 @@ const expectedPages = [
   "/nantucket-auto-glass/",
   "/adas-calibration/",
   "/fleet-adas-calibration/",
+  "/insurance/",
   "/fleet-request-received/",
   "/thank-you/",
   "/privacy/",
@@ -252,13 +253,18 @@ test("critical marketing and trust content is present", () => {
   const home = read(path.join(siteDir, "index.html"));
   const fleet = read(path.join(siteDir, "fleet-adas-calibration", "index.html"));
   const adas = read(path.join(siteDir, "adas-calibration", "index.html"));
+  const insurance = read(path.join(siteDir, "insurance", "index.html"));
 
   assert.match(home, /Hands down the best auto glass service I've ever experienced!/, "temporary Google review should be visible");
   assert.doesNotMatch(home, /No published Google reviews yet/, "placeholder review copy should not be visible");
   assert.match(home, /ANSI\/AGSC\/AGRSS-certified technician/, "certification trust signal should be on the homepage");
+  assert.match(home, /Tell your insurance company you want Shoreline/, "homepage should promote insurance claim help");
   assert.match(fleet, /Fleet ADAS Calibration &amp; Auto Glass/, "fleet page headline should exist");
   assert.match(fleet, /ANSI\/AGSC\/AGRSS-certified operating partner/, "fleet page should mention certification");
   assert.match(adas, /ADAS Calibration After Windshield Replacement/, "ADAS page headline should exist");
+  assert.match(insurance, /Tell Your Insurance Company You Want Shoreline Auto Glass/, "insurance page headline should exist");
+  assert.match(insurance, /major glass claim TPAs/, "insurance page should mention major glass claim TPAs");
+  assert.match(insurance, /I choose Shoreline Auto Glass for my auto glass claim/, "insurance page should include a customer script");
 });
 
 test("analytics events and IDs are present", () => {

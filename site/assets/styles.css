@@ -622,6 +622,48 @@ h3 {
   box-shadow: 0 0 0 4px rgba(144, 205, 244, 0.22);
 }
 
+.insurance-section {
+  background:
+    linear-gradient(180deg, rgba(245, 249, 252, 0.58), rgba(255, 255, 255, 0.96)),
+    var(--white);
+}
+
+.claim-script {
+  margin: 0 0 12px;
+  color: var(--navy);
+  font-size: clamp(1.24rem, 2.6vw, 2rem);
+  line-height: 1.2;
+  font-weight: 950;
+}
+
+.script-note {
+  display: block;
+  color: var(--muted);
+  font-size: 0.96rem;
+  font-weight: 800;
+}
+
+.carrier-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.carrier-grid span {
+  min-height: 48px;
+  display: flex;
+  align-items: center;
+  padding: 10px 12px;
+  color: var(--navy);
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.98), rgba(248, 252, 255, 0.96)),
+    var(--white);
+  border: 1px solid rgba(188, 210, 226, 0.82);
+  border-radius: 8px;
+  box-shadow: var(--soft-shadow);
+  font-weight: 900;
+}
+
 .process-section h2,
 .process-section h3 {
   color: var(--white);
@@ -1227,7 +1269,8 @@ h3 {
   }
 
   .location-services,
-  .review-grid {
+  .review-grid,
+  .carrier-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
@@ -1261,6 +1304,7 @@ h3 {
   .service-grid,
   .location-services,
   .review-grid,
+  .carrier-grid,
   .local-list,
   .area-panel ul {
     grid-template-columns: 1fr;
