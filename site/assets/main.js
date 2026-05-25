@@ -80,9 +80,14 @@
       }
 
       const submitButton = form.querySelector('button[type="submit"]');
+      const status = form.querySelector("[data-form-status]");
 
       if (submitButton) {
         submitButton.setAttribute("disabled", "true");
+      }
+
+      if (status) {
+        status.textContent = "Sending request...";
       }
 
       try {
@@ -111,7 +116,9 @@
           submitButton.removeAttribute("disabled");
         }
 
-        window.location.href = "mailto:blake.farnsworth@shorelineglassco.com?subject=Fleet%20support%20request&body=Please%20include%20your%20business%20name%2C%20contact%20details%2C%20vehicle%20information%2C%20location%2C%20and%20timing%20needs.";
+        if (status) {
+          status.textContent = "We could not send the request. Please try again in a moment or call Shoreline.";
+        }
       }
     });
   });

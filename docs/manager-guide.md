@@ -119,6 +119,16 @@ Before changing the GlassBiller code, confirm:
 
 The site currently asks for SMS opt-in after quote submission on `site/thank-you/index.html`. The opt-in is a Netlify form named `sms-opt-in`; check Netlify Forms for submissions before sending SMS messages. A true checkbox inside the GlassBiller-hosted iframe must be added by GlassBiller if Shoreline wants consent stored natively with the GlassBiller lead.
 
+Fleet, dealership, and account requests use a Netlify form named `fleet-support`. To have those submissions emailed to Blake without asking the customer to send an email from their own device, set up a Netlify Forms email notification:
+
+1. Open the Shoreline site in Netlify.
+2. Go to Forms.
+3. Open Form notifications.
+4. Add an Email notification for `fleet-support`.
+5. Send notifications to `blake.farnsworth@shorelineglassco.com`.
+
+Netlify stores each submission in the dashboard and sends the collected form fields in the notification email. The website should not use browser-side email sending or exposed SMTP credentials.
+
 ## What Not To Change Casually
 
 - Do not remove `thank-you/index.html`; GlassBiller redirects there after submission.

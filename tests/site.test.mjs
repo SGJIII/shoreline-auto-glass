@@ -226,11 +226,14 @@ test("JavaScript assets have valid syntax", () => {
 
 test("lead forms are configured for Netlify and real success pages", () => {
   const fleetPage = read(path.join(siteDir, "fleet-adas-calibration", "index.html"));
+  const mainJs = read(path.join(siteDir, "assets", "main.js"));
   assert.match(fleetPage, /name=["']fleet-support["']/, "fleet form should have the expected name");
   assert.match(fleetPage, /data-netlify=["']true["']/, "fleet form should use Netlify Forms");
   assert.match(fleetPage, /data-netlify-ajax=["']true["']/, "fleet form should submit without POST landing pages");
   assert.match(fleetPage, /action=["']\/fleet-request-received\/["']/, "fleet form should use the fleet success page");
   assert.match(fleetPage, /name=["']send_to["'] value=["']blake\.farnsworth@shorelineglassco\.com["']/, "fleet form should include Blake recipient metadata");
+  assert.match(fleetPage, /data-form-status/, "fleet form should include an inline status message");
+  assert.doesNotMatch(mainJs, /mailto:blake\.farnsworth@shorelineglassco\.com/, "fleet form should not fall back to customer email");
 
   for (const field of ["business_name", "contact_name", "phone", "email", "account_type", "location", "vehicle_details"]) {
     assert.match(fleetPage, new RegExp(`name=["']${field}["']`), `fleet form should include ${field}`);
