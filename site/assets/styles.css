@@ -1185,6 +1185,12 @@ h3 {
   font-size: 1.1rem;
 }
 
+.thanks-phone {
+  margin: 18px 0 8px;
+  color: var(--navy);
+  font-weight: 900;
+}
+
 .sms-opt-in-form {
   display: grid;
   gap: 12px;

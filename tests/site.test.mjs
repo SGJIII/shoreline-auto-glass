@@ -254,6 +254,9 @@ test("GlassBiller embed is configured but not submitted by tests", () => {
   assert.match(quoteForm, /shop-id["'], ["']2870["']/, "GlassBiller shop ID should be 2870");
   assert.match(quoteForm, /button-position["'], ["']left["']/, "GlassBiller fixed button should be left aligned");
   assert.match(quoteForm, /\/thank-you\//, "GlassBiller should redirect to the thank-you page");
+  assert.match(quoteForm, /name: ["']VIN["']/, "GlassBiller VIN label should be uppercase");
+  assert.match(quoteForm, /Insurance Carrier \/ Claim Number/, "GlassBiller should expose insurance info field");
+  assert.match(quoteForm, /Damage Details \(include all glass needed\)/, "GlassBiller should invite multiple glass details");
 });
 
 test("critical marketing and trust content is present", () => {
@@ -278,6 +281,11 @@ test("critical marketing and trust content is present", () => {
   assert.match(insurance, /I choose Shoreline Auto Glass for my auto glass claim/, "insurance page should include a customer script");
   assert.match(insurance, /agsc-membership-2026\.png/, "insurance page should show AGSC membership");
   assert.doesNotMatch(insurance, /Blake Farnsworth/, "insurance page should keep public copy brand-forward");
+
+  const thanksPage = read(path.join(siteDir, "thank-you", "index.html"));
+  assert.match(thanksPage, /sent to Shoreline Auto Glass/, "thank-you page should use customer-facing receipt language");
+  assert.doesNotMatch(thanksPage, /leads dashboard/, "thank-you page should not mention internal dashboards");
+  assert.match(thanksPage, /data-netlify-ajax=["']true["']/, "SMS opt-in should submit without POST landing pages");
 });
 
 test("analytics events and IDs are present", () => {
