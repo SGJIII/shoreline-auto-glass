@@ -129,6 +129,8 @@ Fleet, dealership, and account requests use a Netlify form named `fleet-support`
 
 Netlify stores each submission in the dashboard and sends the collected form fields in the notification email. The website should not use browser-side email sending or exposed SMTP credentials.
 
+The homepage also includes hidden Netlify detection forms for `fleet-support` and `sms-opt-in`. Keep those hidden field names in sync with the visible forms. Netlify scans static HTML during deploy, so these hidden forms make the dashboard detection more reliable.
+
 ## What Not To Change Casually
 
 - Do not remove `thank-you/index.html`; GlassBiller redirects there after submission.

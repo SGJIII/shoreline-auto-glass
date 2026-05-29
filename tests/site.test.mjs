@@ -225,10 +225,14 @@ test("JavaScript assets have valid syntax", () => {
 });
 
 test("lead forms are configured for Netlify and real success pages", () => {
+  const home = read(path.join(siteDir, "index.html"));
   const fleetPage = read(path.join(siteDir, "fleet-adas-calibration", "index.html"));
   const mainJs = read(path.join(siteDir, "assets", "main.js"));
+  assert.match(home, /<form name=["']fleet-support["'][^>]*hidden/, "homepage should include hidden fleet form detection markup");
+  assert.match(home, /<form name=["']sms-opt-in["'][^>]*hidden/, "homepage should include hidden SMS form detection markup");
   assert.match(fleetPage, /name=["']fleet-support["']/, "fleet form should have the expected name");
   assert.match(fleetPage, /data-netlify=["']true["']/, "fleet form should use Netlify Forms");
+  assert.match(fleetPage, /\snetlify\s/, "fleet form should include the boolean Netlify attribute");
   assert.match(fleetPage, /data-netlify-ajax=["']true["']/, "fleet form should submit without POST landing pages");
   assert.match(fleetPage, /action=["']\/fleet-request-received\/["']/, "fleet form should use the fleet success page");
   assert.match(fleetPage, /name=["']send_to["'] value=["']blake\.farnsworth@shorelineglassco\.com["']/, "fleet form should include Blake recipient metadata");
