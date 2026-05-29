@@ -6,6 +6,7 @@ import test from "node:test";
 
 const rootDir = path.resolve(new URL("..", import.meta.url).pathname);
 const siteDir = path.join(rootDir, "site");
+const individualNamePattern = new RegExp(["bl", "ake|farns", "worth"].join(""), "i");
 const expectedPages = [
   "/",
   "/cape-cod-windshield-replacement/",
@@ -235,9 +236,9 @@ test("lead forms are configured for Netlify and real success pages", () => {
   assert.match(fleetPage, /\snetlify\s/, "fleet form should include the boolean Netlify attribute");
   assert.match(fleetPage, /data-netlify-ajax=["']true["']/, "fleet form should submit without POST landing pages");
   assert.match(fleetPage, /action=["']\/fleet-request-received\/["']/, "fleet form should use the fleet success page");
-  assert.match(fleetPage, /name=["']send_to["'] value=["']blake\.farnsworth@shorelineglassco\.com["']/, "fleet form should include Blake recipient metadata");
+  assert.doesNotMatch(fleetPage, /name=["']send_to["']/, "fleet form should not expose person-specific recipient metadata");
   assert.match(fleetPage, /data-form-status/, "fleet form should include an inline status message");
-  assert.doesNotMatch(mainJs, /mailto:blake\.farnsworth@shorelineglassco\.com/, "fleet form should not fall back to customer email");
+  assert.doesNotMatch(mainJs, /mailto:/, "fleet form should not fall back to customer email");
 
   for (const field of ["business_name", "contact_name", "phone", "email", "account_type", "location", "vehicle_details"]) {
     assert.match(fleetPage, new RegExp(`name=["']${field}["']`), `fleet form should include ${field}`);
@@ -269,18 +270,18 @@ test("critical marketing and trust content is present", () => {
   assert.doesNotMatch(home, /No published Google reviews yet/, "placeholder review copy should not be visible");
   assert.match(home, /ANSI\/AGSC\/AGRSS-certified technician/, "certification trust signal should be on the homepage");
   assert.match(home, /agsc-membership-2026\.png/, "AGSC membership badge should be on the homepage");
-  assert.doesNotMatch(home, /Blake Farnsworth/, "homepage should keep technician trust brand-forward");
+  assert.doesNotMatch(home, individualNamePattern, "homepage should keep technician trust brand-forward");
   assert.match(home, /Tell your insurance company you want Shoreline/, "homepage should promote insurance claim help");
   assert.match(fleet, /Fleet ADAS Calibration &amp; Auto Glass/, "fleet page headline should exist");
   assert.match(fleet, /AGSC-certified Shoreline Auto Glass technician/, "fleet page should mention certification");
-  assert.doesNotMatch(fleet, /Blake Farnsworth|Call Blake/, "fleet page should keep public copy brand-forward");
+  assert.doesNotMatch(fleet, individualNamePattern, "fleet page should keep public copy brand-forward");
   assert.match(fleet, /Registered member of the Auto Glass Safety Council/, "fleet page should show AGSC membership");
   assert.match(adas, /ADAS Calibration After Windshield Replacement/, "ADAS page headline should exist");
   assert.match(insurance, /Tell Your Insurance Company You Want Shoreline Auto Glass/, "insurance page headline should exist");
   assert.match(insurance, /major glass claim TPAs/, "insurance page should mention major glass claim TPAs");
   assert.match(insurance, /I choose Shoreline Auto Glass for my auto glass claim/, "insurance page should include a customer script");
   assert.match(insurance, /agsc-membership-2026\.png/, "insurance page should show AGSC membership");
-  assert.doesNotMatch(insurance, /Blake Farnsworth/, "insurance page should keep public copy brand-forward");
+  assert.doesNotMatch(insurance, individualNamePattern, "insurance page should keep public copy brand-forward");
 
   const thanksPage = read(path.join(siteDir, "thank-you", "index.html"));
   assert.match(thanksPage, /sent to Shoreline Auto Glass/, "thank-you page should use customer-facing receipt language");
@@ -308,4 +309,5 @@ test("site copy avoids known bad states", () => {
   assert.doesNotMatch(siteText, /Page not found/i, "site should not contain page-not-found copy");
   assert.doesNotMatch(siteText, /Massachusettes/i, "site should not contain misspelled Massachusetts");
   assert.doesNotMatch(siteText, /—/, "site should not contain em dashes");
+  assert.doesNotMatch(siteText, individualNamePattern, "site should not expose individual technician names");
 });
