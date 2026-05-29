@@ -286,6 +286,7 @@ test("critical marketing and trust content is present", () => {
   assert.match(thanksPage, /sent to Shoreline Auto Glass/, "thank-you page should use customer-facing receipt language");
   assert.doesNotMatch(thanksPage, /leads dashboard/, "thank-you page should not mention internal dashboards");
   assert.match(thanksPage, /data-netlify-ajax=["']true["']/, "SMS opt-in should submit without POST landing pages");
+  assert.match(thanksPage, /Text updates enabled/, "SMS opt-in should show a confirmation state");
 });
 
 test("analytics events and IDs are present", () => {

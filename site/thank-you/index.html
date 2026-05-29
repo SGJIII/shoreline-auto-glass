@@ -46,14 +46,34 @@
     <script>
       (function () {
         const params = new URLSearchParams(window.location.search);
+        const eyebrow = document.querySelector("[data-thanks-eyebrow]");
+        const title = document.querySelector("[data-thanks-title]");
+        const message = document.querySelector("[data-thanks-message]");
+        const smsForm = document.querySelector(".sms-opt-in-form");
+
+        if (params.get("sms") === "received") {
+          if (eyebrow) {
+            eyebrow.textContent = "Text updates enabled";
+          }
+
+          if (title) {
+            title.textContent = "Thanks. Shoreline can text you about this request.";
+          }
+
+          if (message) {
+            message.textContent = "Your quote request and text opt-in have been sent to Shoreline Auto Glass.";
+          }
+
+          if (smsForm) {
+            smsForm.hidden = true;
+          }
+
+          return;
+        }
 
         if (params.get("fleet") !== "received") {
           return;
         }
-
-        const eyebrow = document.querySelector("[data-thanks-eyebrow]");
-        const title = document.querySelector("[data-thanks-title]");
-        const message = document.querySelector("[data-thanks-message]");
 
         if (eyebrow) {
           eyebrow.textContent = "Fleet request received";
