@@ -402,7 +402,7 @@ h3 {
 
 .credential-strip {
   display: grid;
-  grid-template-columns: minmax(0, 0.72fr) minmax(0, 1fr);
+  grid-template-columns: minmax(0, 0.62fr) minmax(0, 1fr) auto;
   gap: 26px;
   align-items: center;
   margin-top: -1px;
@@ -414,10 +414,47 @@ h3 {
   margin: 0;
 }
 
-.credential-strip p:last-child {
+.credential-strip > p {
   margin: 0;
   color: var(--muted);
   font-size: 1.06rem;
+}
+
+.agsc-membership-badge,
+.service-badge,
+.trust-badge img {
+  background: var(--white);
+  border: 1px solid rgba(188, 210, 226, 0.82);
+  border-radius: 8px;
+  box-shadow: var(--soft-shadow);
+}
+
+.agsc-membership-badge {
+  width: 112px;
+  justify-self: end;
+  padding: 8px;
+}
+
+.trust-badge {
+  width: fit-content;
+  display: inline-flex;
+  align-items: center;
+  gap: 14px;
+  margin: 2px 0 28px;
+  padding: 10px 14px 10px 10px;
+  color: var(--navy);
+  background: rgba(255, 255, 255, 0.84);
+  border: 1px solid rgba(188, 210, 226, 0.82);
+  border-radius: 8px;
+  box-shadow: var(--soft-shadow);
+  font-weight: 900;
+}
+
+.trust-badge img {
+  width: 76px;
+  padding: 5px;
+  flex: 0 0 auto;
+  box-shadow: none;
 }
 
 .section {
@@ -476,6 +513,12 @@ h3 {
 .service-card .text-link {
   display: inline-flex;
   margin-top: 6px;
+}
+
+.service-badge {
+  width: 82px;
+  margin-top: 10px;
+  padding: 6px;
 }
 
 .service-icon {
@@ -1301,6 +1344,10 @@ h3 {
   .button,
   .nav-call,
   .nav-quote {
+    width: 100%;
+  }
+
+  .trust-badge {
     width: 100%;
   }
 
