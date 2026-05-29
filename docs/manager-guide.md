@@ -9,7 +9,7 @@ This site is intentionally simple: static files, clear sections, and no build sy
 Edit:
 
 - `site/index.html`
-- `site/cape-cod-windshield-replacement/index.html`
+- `site/cape-cod-windshield-repair/index.html`
 - `site/thank-you/index.html`
 - `content/site-copy.md`
 
@@ -19,13 +19,13 @@ The privacy/SMS terms page also includes contact details at `site/privacy/index.
 
 ### Update service area
 
-Edit the `Service Area` section in `site/index.html`, the Cape Cod landing page at `site/cape-cod-windshield-replacement/index.html`, and the notes in `content/site-copy.md`.
+Edit the `Service Area` section in `site/index.html`, the Cape Cod landing page at `site/cape-cod-windshield-repair/index.html`, and the notes in `content/site-copy.md`.
 
 Keep the wording service-area based unless Shoreline decides to publish a walk-in address.
 
 ### Update Cape Cod SEO page
 
-The Cape Cod landing page lives at `site/cape-cod-windshield-replacement/index.html`.
+The Cape Cod landing page lives at `site/cape-cod-windshield-repair/index.html`.
 
 Keep the page focused on real customer needs: mobile windshield replacement, Cape Cod auto glass, chip repair, door glass, rear glass, ADAS calibration, service towns, and quote scheduling. Do not repeat the same phrase unnaturally; write for customers first.
 
@@ -39,11 +39,11 @@ If the page URL changes, update:
 
 The main regional pages are:
 
-- `site/cape-cod-windshield-replacement/index.html`
-- `site/south-coast-auto-glass/index.html`
-- `site/south-shore-auto-glass/index.html`
-- `site/marthas-vineyard-auto-glass/index.html`
-- `site/nantucket-auto-glass/index.html`
+- `site/cape-cod-windshield-repair/index.html`
+- `site/south-coast-windshield-repair/index.html`
+- `site/south-shore-windshield-repair/index.html`
+- `site/marthas-vineyard-windshield-repair/index.html`
+- `site/nantucket-windshield-repair/index.html`
 
 Each regional page should stay useful and specific to that area. Avoid creating lots of copied town pages with only the place name changed. If a regional page URL, title, or menu label changes, update the Regions dropdown, footer links, `site/sitemap.xml`, and `site/_redirects`.
 

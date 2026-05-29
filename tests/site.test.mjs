@@ -9,11 +9,11 @@ const siteDir = path.join(rootDir, "site");
 const individualNamePattern = new RegExp(["bl", "ake|farns", "worth"].join(""), "i");
 const expectedPages = [
   "/",
-  "/cape-cod-windshield-replacement/",
-  "/south-coast-auto-glass/",
-  "/south-shore-auto-glass/",
-  "/marthas-vineyard-auto-glass/",
-  "/nantucket-auto-glass/",
+  "/cape-cod-windshield-repair/",
+  "/south-coast-windshield-repair/",
+  "/south-shore-windshield-repair/",
+  "/marthas-vineyard-windshield-repair/",
+  "/nantucket-windshield-repair/",
   "/adas-calibration/",
   "/fleet-adas-calibration/",
   "/insurance/",

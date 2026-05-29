@@ -5,11 +5,11 @@ Static lead-generation website for `www.shorelineglassco.com`.
 ## What is included
 
 - `site/index.html` - the full public homepage.
-- `site/cape-cod-windshield-replacement/index.html` - Cape Cod SEO landing page.
-- `site/south-coast-auto-glass/index.html` - South Coast regional SEO landing page.
-- `site/south-shore-auto-glass/index.html` - South Shore regional SEO landing page.
-- `site/marthas-vineyard-auto-glass/index.html` - Martha's Vineyard regional SEO landing page.
-- `site/nantucket-auto-glass/index.html` - Nantucket regional SEO landing page.
+- `site/cape-cod-windshield-repair/index.html` - Cape Cod SEO landing page.
+- `site/south-coast-windshield-repair/index.html` - South Coast regional SEO landing page.
+- `site/south-shore-windshield-repair/index.html` - South Shore regional SEO landing page.
+- `site/marthas-vineyard-windshield-repair/index.html` - Martha's Vineyard regional SEO landing page.
+- `site/nantucket-windshield-repair/index.html` - Nantucket regional SEO landing page.
 - `site/adas-calibration/index.html` - ADAS calibration SEO landing page.
 - `site/fleet-adas-calibration/index.html` - fleet, dealership, and account calibration lead page.
 - `site/insurance/index.html` - insurance claim help page for customers who want Shoreline by name.

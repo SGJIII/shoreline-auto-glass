@@ -3,11 +3,11 @@ import { execFileSync } from "node:child_process";
 const baseUrl = (process.env.SITE_URL || "https://www.shorelineglassco.com").replace(/\/$/, "");
 const paths = [
   "/",
-  "/cape-cod-windshield-replacement/",
-  "/south-coast-auto-glass/",
-  "/south-shore-auto-glass/",
-  "/marthas-vineyard-auto-glass/",
-  "/nantucket-auto-glass/",
+  "/cape-cod-windshield-repair/",
+  "/south-coast-windshield-repair/",
+  "/south-shore-windshield-repair/",
+  "/marthas-vineyard-windshield-repair/",
+  "/nantucket-windshield-repair/",
   "/adas-calibration/",
   "/fleet-adas-calibration/",
   "/insurance/",
@@ -28,6 +28,11 @@ const paths = [
   "/dealership-auto-glass",
   "/commercial-auto-glass",
   "/windshield-calibration",
+  "/cape-cod-windshield-replacement",
+  "/south-coast-auto-glass",
+  "/south-shore-auto-glass",
+  "/marthas-vineyard-auto-glass",
+  "/nantucket-auto-glass",
 ];
 
 const failures = [];

@@ -30,7 +30,7 @@ Shoreline can mention technician experience, mobile service, and ADAS-related wo
 
 ## Cape Cod SEO Page
 
-Canonical URL: `https://www.shorelineglassco.com/cape-cod-windshield-replacement/`
+Canonical URL: `https://www.shorelineglassco.com/cape-cod-windshield-repair/`
 
 Target phrases:
 
