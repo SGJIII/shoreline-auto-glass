@@ -269,7 +269,7 @@ test("critical marketing and trust content is present", () => {
   assert.match(home, /Hands down the best auto glass service I've ever experienced!/, "temporary Google review should be visible");
   assert.doesNotMatch(home, /No published Google reviews yet/, "placeholder review copy should not be visible");
   assert.match(home, /ANSI\/AGSC\/AGRSS-certified technician/, "certification trust signal should be on the homepage");
-  assert.match(home, /agsc-membership-2026\.png/, "AGSC membership badge should be on the homepage");
+  assert.match(home, /agsc-membership-2026-wide\.png/, "cropped AGSC membership badge should be on the homepage");
   assert.doesNotMatch(home, individualNamePattern, "homepage should keep technician trust brand-forward");
   assert.match(home, /Tell your insurance company you want Shoreline/, "homepage should promote insurance claim help");
   assert.match(fleet, /Fleet ADAS Calibration &amp; Auto Glass/, "fleet page headline should exist");

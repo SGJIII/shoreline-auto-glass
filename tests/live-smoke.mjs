@@ -19,7 +19,7 @@ const paths = [
   "/assets/main.js?v=20260529b",
   "/assets/analytics.js?v=20260524b",
   "/assets/quote-form.js?v=20260529a",
-  "/assets/styles.css?v=20260529b",
+  "/assets/styles.css?v=20260529c",
   "/insurance-claims",
   "/auto-glass-insurance",
   "/windshield-insurance-claim",

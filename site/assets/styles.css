@@ -430,9 +430,9 @@ h3 {
 }
 
 .agsc-membership-badge {
-  width: 112px;
+  width: 172px;
   justify-self: end;
-  padding: 8px;
+  padding: 10px 12px;
 }
 
 .trust-badge {
@@ -1337,6 +1337,12 @@ h3 {
 
   .footer-links {
     text-align: left;
+  }
+
+  .agsc-membership-badge {
+    width: 100%;
+    justify-self: stretch;
+    padding: clamp(14px, 5vw, 24px);
   }
 }
 

@@ -71,6 +71,7 @@ The main files used by the site are:
 - `shoreline-logo-hero.png`
 - `shoreline-logo-wordmark.png`
 - `agsc-membership-2026.png`
+- `agsc-membership-2026-wide.png`
 
 Use the same file names when swapping assets so the HTML does not need to change.
 
