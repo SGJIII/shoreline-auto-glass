@@ -14,6 +14,8 @@ https://shorelineglassco.com/* https://www.shorelineglassco.com/:splat 301!
 /auto-glass-insurance /insurance/ 301
 /windshield-insurance-claim /insurance/ 301
 /glass-insurance-claim /insurance/ 301
+/lifetime-warranty /warranty/ 301
+/workmanship-warranty /warranty/ 301
 /fleet-auto-glass /fleet-adas-calibration/ 301
 /fleet-calibration /fleet-adas-calibration/ 301
 /dealership-auto-glass /fleet-adas-calibration/ 301

@@ -16,6 +16,7 @@ Edit:
 Search for `(774) 560-8440`, `+17745608440`, and `info@shorelineglassco.com`.
 
 The privacy/SMS terms page also includes contact details at `site/privacy/index.html`.
+The warranty page includes contact details at `site/warranty/index.html`.
 
 ### Update service area
 
@@ -107,6 +108,12 @@ Edit `site/privacy/index.html`.
 
 Keep the SMS section visible and public at `/privacy/`. If Shoreline changes texting providers or use cases, update the message types, opt-out instructions, and support contact details before submitting A2P/texting paperwork.
 
+### Update warranty terms
+
+Edit `site/warranty/index.html`.
+
+Keep the warranty page public at `/warranty/` and keep wording specific to workmanship. If the coverage changes, update the page, the Services dropdown, footer links, and any customer-facing scripts or estimate templates that mention warranty coverage.
+
 ## Lead Flow
 
 The floating quote button is loaded from GlassBiller through `site/assets/quote-form.js`. Leads should appear in the GlassBiller leads dashboard for shop ID `2870`.
@@ -138,5 +145,5 @@ The homepage also includes hidden Netlify detection forms for `fleet-support` an
 - Do not remove `thank-you/index.html`; GlassBiller redirects there after submission.
 - Do not replace the GlassBiller shop ID unless Shoreline moves accounts.
 - Do not publish a physical address unless Shoreline approves it.
-- Do not add unconfirmed claims like same-day service, direct insurance billing, warranties, or public rankings.
+- Do not add unconfirmed claims like same-day service, direct insurance billing, broader warranties, or public rankings.
 - ADAS support is approved, but avoid unverifiable wording like "best in the region" unless Shoreline has proof to cite.

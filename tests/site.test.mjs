@@ -17,6 +17,7 @@ const expectedPages = [
   "/adas-calibration/",
   "/fleet-adas-calibration/",
   "/insurance/",
+  "/warranty/",
   "/fleet-request-received/",
   "/thank-you/",
   "/privacy/",
@@ -265,6 +266,7 @@ test("critical marketing and trust content is present", () => {
   const fleet = read(path.join(siteDir, "fleet-adas-calibration", "index.html"));
   const adas = read(path.join(siteDir, "adas-calibration", "index.html"));
   const insurance = read(path.join(siteDir, "insurance", "index.html"));
+  const warranty = read(path.join(siteDir, "warranty", "index.html"));
 
   assert.match(home, /Hands down the best auto glass service I've ever experienced!/, "temporary Google review should be visible");
   assert.doesNotMatch(home, /No published Google reviews yet/, "placeholder review copy should not be visible");
@@ -283,6 +285,10 @@ test("critical marketing and trust content is present", () => {
   assert.match(insurance, /I choose Shoreline Auto Glass for my auto glass claim/, "insurance page should include a customer script");
   assert.match(insurance, /agsc-membership-2026\.png/, "insurance page should show AGSC membership");
   assert.doesNotMatch(insurance, individualNamePattern, "insurance page should keep public copy brand-forward");
+  assert.match(warranty, /Lifetime Workmanship Warranty/, "warranty page should exist");
+  assert.match(warranty, /Water leaks related to the installation/, "warranty page should list covered workmanship issues");
+  assert.match(warranty, /Damage to the glass after installation is the responsibility of the vehicle owner/, "warranty page should list limitations");
+  assert.doesNotMatch(warranty, individualNamePattern, "warranty page should keep public copy brand-forward");
 
   const thanksPage = read(path.join(siteDir, "thank-you", "index.html"));
   assert.match(thanksPage, /sent to Shoreline Auto Glass/, "thank-you page should use customer-facing receipt language");
