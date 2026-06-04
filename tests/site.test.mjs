@@ -315,6 +315,8 @@ test("critical marketing and trust content is present", () => {
   assert.doesNotMatch(thanksPage, /leads dashboard/, "thank-you page should not mention internal dashboards");
   assert.match(thanksPage, /data-netlify-ajax=["']true["']/, "SMS opt-in should submit without POST landing pages");
   assert.match(thanksPage, /Text updates enabled/, "SMS opt-in should show a confirmation state");
+  assert.match(thanksPage, /successfully opted in to SMS messaging/, "SMS opt-in should show clear success copy");
+  assert.match(thanksPage, /Reply STOP at any time to opt out/, "SMS opt-in should show opt-out copy");
 
   for (const page of regionPages) {
     const region = read(sitePathToFile(page));
