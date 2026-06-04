@@ -22,6 +22,13 @@ const expectedPages = [
   "/thank-you/",
   "/privacy/",
 ];
+const regionPages = [
+  "/cape-cod-windshield-repair/",
+  "/south-coast-windshield-repair/",
+  "/south-shore-windshield-repair/",
+  "/marthas-vineyard-windshield-repair/",
+  "/nantucket-windshield-repair/",
+];
 
 function walk(dir) {
   return readdirSync(dir, { withFileTypes: true }).flatMap((entry) => {
@@ -273,16 +280,21 @@ test("critical marketing and trust content is present", () => {
   assert.match(home, /ANSI\/AGSC\/AGRSS-certified technician/, "certification trust signal should be on the homepage");
   assert.match(home, /agsc-membership-2026-wide\.png/, "cropped AGSC membership badge should be on the homepage");
   assert.match(home, /class=["']footer-badge["']/, "AGSC membership badge should appear in the footer");
+  assert.match(home, /View the lifetime workmanship warranty/, "homepage should link to the warranty near trust content");
+  assert.match(home, /Installations performed by Shoreline are backed by a <a class="text-link" href="\/warranty\/">lifetime workmanship warranty<\/a>/, "homepage replacement card should mention warranty");
   assert.doesNotMatch(home, individualNamePattern, "homepage should keep technician trust brand-forward");
   assert.match(home, /Tell your insurance company you want Shoreline/, "homepage should promote insurance claim help");
   assert.match(fleet, /Fleet ADAS Calibration &amp; Auto Glass/, "fleet page headline should exist");
   assert.match(fleet, /AGSC-certified Shoreline Auto Glass technician/, "fleet page should mention certification");
+  assert.match(fleet, /Commercial Windshield Replacement[\s\S]*lifetime workmanship warranty/, "fleet page should mention warranty for commercial windshield replacement");
   assert.doesNotMatch(fleet, individualNamePattern, "fleet page should keep public copy brand-forward");
   assert.match(fleet, /Registered member of the Auto Glass Safety Council/, "fleet page should show AGSC membership");
   assert.match(adas, /ADAS Calibration After Windshield Replacement/, "ADAS page headline should exist");
+  assert.match(adas, /After Windshield Replacement[\s\S]*lifetime workmanship warranty/, "ADAS page should mention warranty where windshield replacement is discussed");
   assert.match(insurance, /Tell Your Insurance Company You Want Shoreline Auto Glass/, "insurance page headline should exist");
   assert.match(insurance, /major glass claim TPAs/, "insurance page should mention major glass claim TPAs");
   assert.match(insurance, /I choose Shoreline Auto Glass for my auto glass claim/, "insurance page should include a customer script");
+  assert.match(insurance, /Warranty: lifetime workmanship warranty on Shoreline installations/, "insurance page should include warranty in claim details");
   assert.match(insurance, /agsc-membership-2026\.png/, "insurance page should show AGSC membership");
   assert.doesNotMatch(insurance, individualNamePattern, "insurance page should keep public copy brand-forward");
   assert.match(warranty, /Lifetime Workmanship Warranty/, "warranty page should exist");
@@ -295,6 +307,12 @@ test("critical marketing and trust content is present", () => {
   assert.doesNotMatch(thanksPage, /leads dashboard/, "thank-you page should not mention internal dashboards");
   assert.match(thanksPage, /data-netlify-ajax=["']true["']/, "SMS opt-in should submit without POST landing pages");
   assert.match(thanksPage, /Text updates enabled/, "SMS opt-in should show a confirmation state");
+
+  for (const page of regionPages) {
+    const region = read(sitePathToFile(page));
+    assert.match(region, /lifetime workmanship warranty/, `${page} should mention warranty`);
+    assert.match(region, /href=["']\/warranty\//, `${page} should link to warranty`);
+  }
 });
 
 test("analytics events and IDs are present", () => {
