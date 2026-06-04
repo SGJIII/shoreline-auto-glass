@@ -300,6 +300,14 @@ test("critical marketing and trust content is present", () => {
   assert.match(warranty, /Lifetime Workmanship Warranty/, "warranty page should exist");
   assert.match(warranty, /Water leaks related to the installation/, "warranty page should list covered workmanship issues");
   assert.match(warranty, /Damage to the glass after installation is the responsibility of the vehicle owner/, "warranty page should list limitations");
+  assert.match(warranty, /stand behind the installation and make it right/, "warranty page should clearly stand behind workmanship");
+  assert.match(warranty, /Chip Repair Disclaimer/, "warranty page should include chip repair disclaimer");
+  assert.match(warranty, /not intended to be a complete cosmetic solution/, "chip repair disclaimer should set cosmetic expectations");
+  assert.match(warranty, /hidden rust, corrosion, pinch weld damage/, "warranty page should exclude hidden damage discovered after removal");
+  assert.match(warranty, /ADAS And Recalibration Limitations/, "warranty page should include ADAS limitations");
+  assert.match(warranty, /Advanced driver assistance systems are not a replacement for safe driving/, "ADAS disclaimer should preserve safe driving responsibility");
+  assert.match(warranty, /within 30 days of discovering a potential workmanship issue/, "warranty page should include notice window");
+  assert.match(warranty, /incidental, indirect, special, or consequential damages/, "warranty page should include liability limitation");
   assert.doesNotMatch(warranty, individualNamePattern, "warranty page should keep public copy brand-forward");
 
   const thanksPage = read(path.join(siteDir, "thank-you", "index.html"));
@@ -333,6 +341,7 @@ test("site copy avoids known bad states", () => {
 
   assert.doesNotMatch(siteText, /Page not found/i, "site should not contain page-not-found copy");
   assert.doesNotMatch(siteText, /Massachusettes/i, "site should not contain misspelled Massachusetts");
+  assert.doesNotMatch(siteText, /ensure your safety/i, "site should not make absolute ADAS safety claims");
   assert.doesNotMatch(siteText, /—/, "site should not contain em dashes");
   assert.doesNotMatch(siteText, individualNamePattern, "site should not expose individual technician names");
 });
