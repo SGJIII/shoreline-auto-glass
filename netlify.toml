@@ -1,6 +1,9 @@
 [build]
   publish = "site"
 
+[functions]
+  directory = "netlify/functions"
+
 [[headers]]
   for = "/*"
   [headers.values]
@@ -18,3 +21,8 @@
   to = "https://www.shorelineglassco.com/:splat"
   status = 301
   force = true
+
+[[redirects]]
+  from = "/api/google-reviews"
+  to = "/.netlify/functions/google-reviews"
+  status = 200

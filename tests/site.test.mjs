@@ -3,6 +3,7 @@ import { execFileSync } from "node:child_process";
 import { existsSync, readdirSync, readFileSync } from "node:fs";
 import path from "node:path";
 import test from "node:test";
+import { pathToFileURL } from "node:url";
 
 const rootDir = path.resolve(new URL("..", import.meta.url).pathname);
 const siteDir = path.join(rootDir, "site");
@@ -38,7 +39,11 @@ function walk(dir) {
 }
 
 const htmlFiles = walk(siteDir).filter((file) => file.endsWith(".html"));
-const jsFiles = walk(path.join(siteDir, "assets")).filter((file) => file.endsWith(".js"));
+const functionDir = path.join(rootDir, "netlify", "functions");
+const jsFiles = [
+  ...walk(path.join(siteDir, "assets")).filter((file) => file.endsWith(".js")),
+  ...(existsSync(functionDir) ? walk(functionDir).filter((file) => file.endsWith(".js") || file.endsWith(".mjs")) : []),
+];
 const cssFiles = walk(path.join(siteDir, "assets")).filter((file) => file.endsWith(".css"));
 
 function read(file) {
@@ -256,6 +261,49 @@ test("lead forms are configured for Netlify and real success pages", () => {
   assert.match(thanksPage, /name=["']sms-opt-in["']/, "SMS opt-in form should exist");
   assert.match(thanksPage, /data-netlify=["']true["']/, "SMS opt-in should use Netlify Forms");
   assert.match(thanksPage, /name=["']sms_consent["'][^>]*required/, "SMS opt-in checkbox should be required");
+});
+
+test("Google reviews are loaded through a safe Netlify function", async () => {
+  const home = read(path.join(siteDir, "index.html"));
+  const reviewsJs = read(path.join(siteDir, "assets", "reviews.js"));
+  const netlifyConfig = read(path.join(rootDir, "netlify.toml"));
+  const functionPath = path.join(rootDir, "netlify", "functions", "google-reviews.mjs");
+
+  assert.match(home, /data-google-reviews/, "homepage should expose review grid for live Google reviews");
+  assert.match(home, /data-google-review-summary/, "homepage should expose review summary for live Google rating");
+  assert.match(home, /\/assets\/reviews\.js\?v=20260612a/, "homepage should load reviews script");
+  assert.match(reviewsJs, /fetch\(["']\/api\/google-reviews["']/, "reviews script should fetch from first-party endpoint");
+  assert.doesNotMatch(reviewsJs, /photoUri|avatar|profile photo/i, "reviews script should not render reviewer photos");
+  assert.match(netlifyConfig, /from = ["']\/api\/google-reviews["']/, "Netlify should expose a friendly reviews API route");
+  assert.match(netlifyConfig, /to = ["']\/\.netlify\/functions\/google-reviews["']/, "reviews API route should target the reviews function");
+
+  const oldPlacesKey = process.env.GOOGLE_PLACES_API_KEY;
+  const oldMapsKey = process.env.GOOGLE_MAPS_API_KEY;
+  delete process.env.GOOGLE_PLACES_API_KEY;
+  delete process.env.GOOGLE_MAPS_API_KEY;
+
+  try {
+    const { handler } = await import(pathToFileURL(functionPath).href);
+    const response = await handler({ httpMethod: "GET" });
+    const payload = JSON.parse(response.body);
+
+    assert.equal(response.statusCode, 200, "reviews function should return OK without an API key");
+    assert.equal(payload.source, "fallback", "reviews function should fall back when no Google key is configured");
+    assert.ok(payload.reviews.length > 0, "fallback should include at least one review");
+    assert.doesNotMatch(JSON.stringify(payload), /photoUri|avatar/i, "reviews payload should not include reviewer photos");
+  } finally {
+    if (oldPlacesKey === undefined) {
+      delete process.env.GOOGLE_PLACES_API_KEY;
+    } else {
+      process.env.GOOGLE_PLACES_API_KEY = oldPlacesKey;
+    }
+
+    if (oldMapsKey === undefined) {
+      delete process.env.GOOGLE_MAPS_API_KEY;
+    } else {
+      process.env.GOOGLE_MAPS_API_KEY = oldMapsKey;
+    }
+  }
 });
 
 test("GlassBiller embed is configured but not submitted by tests", () => {

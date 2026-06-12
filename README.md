@@ -17,9 +17,11 @@ Static lead-generation website for `www.shorelineglassco.com`.
 - `site/thank-you/index.html` - redirect target after GlassBiller quote submission.
 - `site/assets/styles.css` - all site styling.
 - `site/assets/main.js` - mobile menu and current year behavior.
+- `site/assets/reviews.js` - live Google reviews renderer with static fallback.
 - `site/assets/quote-form.js` - shared GlassBiller quote button embed.
 - `site/assets/analytics.js` - Google Analytics tag setup and event tracking.
 - `site/assets/logos/` - Shoreline brand assets, including the favicon and footer full-logo artwork.
+- `netlify/functions/google-reviews.mjs` - serverless Google Places reviews endpoint.
 - `netlify.toml` and `_redirects` - Netlify deploy configuration.
 - `docs/` - manager and deployment handoff notes.
 - `content/site-copy.md` - plain-English copy reference for maintainers.
@@ -100,3 +102,5 @@ GlassBiller is installed through `site/assets/quote-form.js` with:
 Do not test-submit real customer data unless Shoreline approves that test.
 
 Google Analytics 4 is installed with measurement ID `G-HD12WQSBNM`. Event tracking lives in `site/assets/analytics.js`.
+
+Live Google reviews are loaded through `/api/google-reviews`, which maps to `netlify/functions/google-reviews.mjs`. To enable live reviews in production, add `GOOGLE_PLACES_API_KEY` in Netlify environment variables and redeploy. The function defaults to Shoreline's Google place ID, `ChIJuVwlzHVX4E4RSSLSXUa3n4U`; only set `GOOGLE_PLACE_ID` if that changes.

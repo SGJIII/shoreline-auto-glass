@@ -50,15 +50,18 @@ Each regional page should stay useful and specific to that area. Avoid creating 
 
 ### Update displayed reviews
 
-The reviews section on the homepage is display-only.
+The homepage reviews section pulls live Google reviews through the Netlify function at `netlify/functions/google-reviews.mjs`.
 
-To add a Google review:
+To enable live Google reviews in production:
 
-1. In `site/index.html`, find the `reviews-section`.
-2. Replace the placeholder `review-card` with real review cards.
-3. Keep review excerpts short, accurate, and copied exactly from the customer review.
-4. Include the customer's public Google display name and the review source/date when available.
-5. Do not add a review-request button inside this section.
+1. Create or open the Google Maps Platform project for Shoreline.
+2. Enable Places API / Places API (New).
+3. Create an API key with API restrictions limited to Places.
+4. In Netlify, add the environment variable `GOOGLE_PLACES_API_KEY`.
+5. Keep `GOOGLE_PLACE_ID` blank unless the Google Business Profile place ID changes. The current default is `ChIJuVwlzHVX4E4RSSLSXUa3n4U`.
+6. Redeploy the Netlify site after saving the environment variable.
+
+The site keeps a static fallback review in `site/index.html` so the reviews section does not go blank if the API key is missing or Google is unavailable. Do not add reviewer photos; only display stars, review text, public display name, and Google review timing.
 
 ### Replace logos
 

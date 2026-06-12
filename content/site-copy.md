@@ -50,4 +50,4 @@ The page should stay helpful and local. Mention mobile service, windshield repla
 
 ## Review Section
 
-The reviews section is display-only. Until real Google reviews are published, it shows a simple "No published Google reviews yet" card. Add real customer review cards as Google reviews are published; do not show review-request buttons in this section.
+The homepage reviews section pulls live Google reviews through `/api/google-reviews` when `GOOGLE_PLACES_API_KEY` is configured in Netlify. Keep the static review card in `site/index.html` as a fallback so the section does not go blank if Google is unavailable. Do not show reviewer photos; display stars, review text, public display name, and Google review timing only.
