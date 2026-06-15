@@ -50,9 +50,11 @@ Each regional page should stay useful and specific to that area. Avoid creating 
 
 ### Update displayed reviews
 
-The homepage reviews section pulls live Google reviews through the Netlify function at `netlify/functions/google-reviews.mjs`.
+The homepage reviews section displays the Common Ninja reviews widget first. Manage that widget in Common Ninja using component ID `992c7252-797d-48aa-a2b2-3b868ca1c341`. Keep the widget configured to show review text and stars without reviewer photos.
 
-To enable live Google reviews in production:
+The site also keeps a first-party Google reviews fallback through the Netlify function at `netlify/functions/google-reviews.mjs`.
+
+To enable the first-party Google fallback in production:
 
 1. Create or open the Google Maps Platform project for Shoreline.
 2. Enable Places API / Places API (New).
@@ -61,7 +63,7 @@ To enable live Google reviews in production:
 5. Keep `GOOGLE_PLACE_ID` blank unless the Google Business Profile place ID changes. The current default is `ChIJuVwlzHVX4E4RSSLSXUa3n4U`.
 6. Redeploy the Netlify site after saving the environment variable.
 
-The site keeps a static fallback review in `site/index.html` so the reviews section does not go blank if the API key is missing or Google is unavailable. Do not add reviewer photos; only display stars, review text, public display name, and Google review timing.
+The site keeps a static fallback review in `site/index.html` so the reviews section does not go blank if the Common Ninja widget, API key, or Google is unavailable. Do not add reviewer photos; only display stars, review text, public display name, and Google review timing.
 
 ### Replace logos
 

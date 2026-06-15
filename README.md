@@ -103,4 +103,6 @@ Do not test-submit real customer data unless Shoreline approves that test.
 
 Google Analytics 4 is installed with measurement ID `G-HD12WQSBNM`. Event tracking lives in `site/assets/analytics.js`.
 
-Live Google reviews are loaded through `/api/google-reviews`, which maps to `netlify/functions/google-reviews.mjs`. To enable live reviews in production, add `GOOGLE_PLACES_API_KEY` in Netlify environment variables and redeploy. The function defaults to Shoreline's Google place ID, `ChIJuVwlzHVX4E4RSSLSXUa3n4U`; only set `GOOGLE_PLACE_ID` if that changes.
+The homepage reviews section displays a Common Ninja review widget first, using component ID `992c7252-797d-48aa-a2b2-3b868ca1c341`. Keep the widget configured to show stars and review text without reviewer photos.
+
+First-party Google reviews remain available as a fallback through `/api/google-reviews`, which maps to `netlify/functions/google-reviews.mjs`. To enable the fallback in production, add `GOOGLE_PLACES_API_KEY` in Netlify environment variables and redeploy. The function defaults to Shoreline's Google place ID, `ChIJuVwlzHVX4E4RSSLSXUa3n4U`; only set `GOOGLE_PLACE_ID` if that changes.

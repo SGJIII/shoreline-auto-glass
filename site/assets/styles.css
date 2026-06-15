@@ -932,6 +932,11 @@ h3 {
   font-weight: 800;
 }
 
+.review-widget-shell {
+  min-height: 160px;
+  padding: 8px 0 18px;
+}
+
 .review-card {
   min-height: 210px;
   padding: 26px;
