@@ -1,9 +1,56 @@
 (function () {
   const grid = document.querySelector("[data-google-reviews]");
   const summary = document.querySelector("[data-google-review-summary]");
+  const widgetShell = document.querySelector("[data-review-widget-shell]");
+  const widgetComponent = widgetShell ? widgetShell.querySelector(".commonninja_component") : null;
+  const hasReviewWidget = Boolean(widgetShell && widgetComponent);
+  let fallbackHasLiveData = false;
+  let fallbackVisible = false;
 
   if (!grid) {
     return;
+  }
+
+  if (hasReviewWidget) {
+    grid.hidden = true;
+
+    if (summary) {
+      summary.hidden = true;
+    }
+  }
+
+  function widgetHasRendered() {
+    if (!widgetShell || !widgetComponent) {
+      return false;
+    }
+
+    return Boolean(
+      widgetShell.querySelector("iframe") ||
+        widgetComponent.children.length > 0 ||
+        widgetComponent.textContent.trim().length > 20
+    );
+  }
+
+  function hideFallback() {
+    if (!hasReviewWidget) {
+      return;
+    }
+
+    fallbackVisible = false;
+    grid.hidden = true;
+
+    if (summary) {
+      summary.hidden = true;
+    }
+  }
+
+  function showFallback() {
+    fallbackVisible = true;
+    grid.hidden = false;
+
+    if (summary && fallbackHasLiveData) {
+      summary.hidden = false;
+    }
   }
 
   function starText(rating) {
@@ -41,6 +88,7 @@
     }
 
     grid.replaceChildren(...data.reviews.slice(0, 5).map(renderReview));
+    fallbackHasLiveData = true;
 
     if (summary) {
       if (typeof data.rating === "number" && typeof data.userRatingCount === "number") {
@@ -49,8 +97,44 @@
         summary.textContent = "Latest Google reviews";
       }
 
-      summary.hidden = false;
+      summary.hidden = hasReviewWidget && !fallbackVisible;
     }
+
+    if (!hasReviewWidget) {
+      grid.hidden = false;
+    }
+  }
+
+  if (hasReviewWidget) {
+    const observer = new MutationObserver(() => {
+      if (widgetHasRendered()) {
+        hideFallback();
+      }
+    });
+
+    observer.observe(widgetShell, {
+      childList: true,
+      subtree: true,
+      characterData: true,
+    });
+
+    window.addEventListener(
+      "error",
+      (event) => {
+        const target = event.target;
+
+        if (target && target.src && target.src.includes("commoninja.com/sdk/latest/commonninja.js")) {
+          showFallback();
+        }
+      },
+      true
+    );
+
+    window.setTimeout(() => {
+      if (!widgetHasRendered()) {
+        showFallback();
+      }
+    }, 8000);
   }
 
   fetch("/api/google-reviews", {

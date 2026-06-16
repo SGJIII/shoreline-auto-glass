@@ -271,10 +271,14 @@ test("Google reviews are loaded through a safe Netlify function", async () => {
 
   assert.match(home, /data-google-reviews/, "homepage should expose review grid for live Google reviews");
   assert.match(home, /data-google-review-summary/, "homepage should expose review summary for live Google rating");
+  assert.match(home, /data-review-widget-shell/, "homepage should expose a review widget shell");
+  assert.match(home, /data-review-fallback hidden/, "homepage fallback reviews should start hidden");
   assert.match(home, /cdn\.commoninja\.com\/sdk\/latest\/commonninja\.js/, "homepage should load the Common Ninja reviews widget script");
   assert.match(home, /pid-992c7252-797d-48aa-a2b2-3b868ca1c341/, "homepage should include the Common Ninja reviews component");
-  assert.match(home, /\/assets\/reviews\.js\?v=20260612a/, "homepage should load reviews script");
+  assert.match(home, /\/assets\/reviews\.js\?v=20260616a/, "homepage should load reviews script");
   assert.match(reviewsJs, /fetch\(["']\/api\/google-reviews["']/, "reviews script should fetch from first-party endpoint");
+  assert.match(reviewsJs, /widgetHasRendered/, "reviews script should detect whether the widget rendered");
+  assert.match(reviewsJs, /showFallback/, "reviews script should reveal fallback reviews if the widget fails");
   assert.doesNotMatch(reviewsJs, /photoUri|avatar|profile photo/i, "reviews script should not render reviewer photos");
   assert.match(netlifyConfig, /from = ["']\/api\/google-reviews["']/, "Netlify should expose a friendly reviews API route");
   assert.match(netlifyConfig, /to = ["']\/\.netlify\/functions\/google-reviews["']/, "reviews API route should target the reviews function");
