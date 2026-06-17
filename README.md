@@ -17,7 +17,6 @@ Static lead-generation website for `www.shorelineglassco.com`.
 - `site/thank-you/index.html` - redirect target after GlassBiller quote submission.
 - `site/assets/styles.css` - all site styling.
 - `site/assets/main.js` - mobile menu and current year behavior.
-- `site/assets/reviews.js` - live Google reviews renderer with static fallback.
 - `site/assets/quote-form.js` - shared GlassBiller quote button embed.
 - `site/assets/analytics.js` - Google Analytics tag setup and event tracking.
 - `site/assets/logos/` - Shoreline brand assets, including the favicon and footer full-logo artwork.
@@ -103,6 +102,4 @@ Do not test-submit real customer data unless Shoreline approves that test.
 
 Google Analytics 4 is installed with measurement ID `G-HD12WQSBNM`. Event tracking lives in `site/assets/analytics.js`.
 
-The homepage reviews section displays a Common Ninja review widget first, using component ID `992c7252-797d-48aa-a2b2-3b868ca1c341`. Keep the widget configured to show stars and review text without reviewer photos.
-
-First-party Google reviews remain available as a fallback through `/api/google-reviews`, which maps to `netlify/functions/google-reviews.mjs`. To enable the fallback in production, add `GOOGLE_PLACES_API_KEY` in Netlify environment variables and redeploy. The function defaults to Shoreline's Google place ID, `ChIJuVwlzHVX4E4RSSLSXUa3n4U`; only set `GOOGLE_PLACE_ID` if that changes.
+The homepage reviews section displays the Common Ninja review widget only, using component ID `992c7252-797d-48aa-a2b2-3b868ca1c341`. Keep the widget configured to show stars and review text without reviewer photos.

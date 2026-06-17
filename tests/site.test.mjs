@@ -3,7 +3,6 @@ import { execFileSync } from "node:child_process";
 import { existsSync, readdirSync, readFileSync } from "node:fs";
 import path from "node:path";
 import test from "node:test";
-import { pathToFileURL } from "node:url";
 
 const rootDir = path.resolve(new URL("..", import.meta.url).pathname);
 const siteDir = path.join(rootDir, "site");
@@ -263,53 +262,16 @@ test("lead forms are configured for Netlify and real success pages", () => {
   assert.match(thanksPage, /name=["']sms_consent["'][^>]*required/, "SMS opt-in checkbox should be required");
 });
 
-test("Google reviews are loaded through a safe Netlify function", async () => {
+test("Common Ninja reviews widget is the homepage review renderer", () => {
   const home = read(path.join(siteDir, "index.html"));
-  const reviewsJs = read(path.join(siteDir, "assets", "reviews.js"));
-  const netlifyConfig = read(path.join(rootDir, "netlify.toml"));
-  const functionPath = path.join(rootDir, "netlify", "functions", "google-reviews.mjs");
 
-  assert.match(home, /data-google-reviews/, "homepage should expose review grid for live Google reviews");
-  assert.match(home, /data-google-review-summary/, "homepage should expose review summary for live Google rating");
   assert.match(home, /data-review-widget-shell/, "homepage should expose a review widget shell");
-  assert.match(home, /data-review-fallback hidden/, "homepage fallback reviews should start hidden");
   assert.match(home, /cdn\.commoninja\.com\/sdk\/latest\/commonninja\.js/, "homepage should load the Common Ninja reviews widget script");
   assert.match(home, /pid-992c7252-797d-48aa-a2b2-3b868ca1c341/, "homepage should include the Common Ninja reviews component");
-  assert.match(home, /\/assets\/reviews\.js\?v=20260616a/, "homepage should load reviews script");
-  assert.match(reviewsJs, /fetch\(["']\/api\/google-reviews["']/, "reviews script should fetch from first-party endpoint");
-  assert.match(reviewsJs, /widgetHasRendered/, "reviews script should detect whether the widget rendered");
-  assert.match(reviewsJs, /showFallback/, "reviews script should reveal fallback reviews if the widget fails");
-  assert.doesNotMatch(reviewsJs, /photoUri|avatar|profile photo/i, "reviews script should not render reviewer photos");
-  assert.match(netlifyConfig, /from = ["']\/api\/google-reviews["']/, "Netlify should expose a friendly reviews API route");
-  assert.match(netlifyConfig, /to = ["']\/\.netlify\/functions\/google-reviews["']/, "reviews API route should target the reviews function");
-
-  const oldPlacesKey = process.env.GOOGLE_PLACES_API_KEY;
-  const oldMapsKey = process.env.GOOGLE_MAPS_API_KEY;
-  delete process.env.GOOGLE_PLACES_API_KEY;
-  delete process.env.GOOGLE_MAPS_API_KEY;
-
-  try {
-    const { handler } = await import(pathToFileURL(functionPath).href);
-    const response = await handler({ httpMethod: "GET" });
-    const payload = JSON.parse(response.body);
-
-    assert.equal(response.statusCode, 200, "reviews function should return OK without an API key");
-    assert.equal(payload.source, "fallback", "reviews function should fall back when no Google key is configured");
-    assert.ok(payload.reviews.length > 0, "fallback should include at least one review");
-    assert.doesNotMatch(JSON.stringify(payload), /photoUri|avatar/i, "reviews payload should not include reviewer photos");
-  } finally {
-    if (oldPlacesKey === undefined) {
-      delete process.env.GOOGLE_PLACES_API_KEY;
-    } else {
-      process.env.GOOGLE_PLACES_API_KEY = oldPlacesKey;
-    }
-
-    if (oldMapsKey === undefined) {
-      delete process.env.GOOGLE_MAPS_API_KEY;
-    } else {
-      process.env.GOOGLE_MAPS_API_KEY = oldMapsKey;
-    }
-  }
+  assert.doesNotMatch(home, /data-google-reviews/, "homepage should not render the old fallback review grid");
+  assert.doesNotMatch(home, /data-google-review-summary/, "homepage should not render the old fallback review summary");
+  assert.doesNotMatch(home, /\/assets\/reviews\.js/, "homepage should not load the old fallback reviews script");
+  assert.doesNotMatch(home, /Hands down the best auto glass service I've ever experienced!/, "homepage should not render the old placeholder review card");
 });
 
 test("GlassBiller embed is configured but not submitted by tests", () => {
@@ -329,7 +291,6 @@ test("critical marketing and trust content is present", () => {
   const insurance = read(path.join(siteDir, "insurance", "index.html"));
   const warranty = read(path.join(siteDir, "warranty", "index.html"));
 
-  assert.match(home, /Hands down the best auto glass service I've ever experienced!/, "temporary Google review should be visible");
   assert.doesNotMatch(home, /No published Google reviews yet/, "placeholder review copy should not be visible");
   assert.match(home, /ANSI\/AGSC\/AGRSS-certified technician/, "certification trust signal should be on the homepage");
   assert.match(home, /agsc-membership-2026-wide\.png/, "cropped AGSC membership badge should be on the homepage");
