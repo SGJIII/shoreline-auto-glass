@@ -357,6 +357,20 @@ test("critical marketing and trust content is present", () => {
     assert.match(read(sitePathToFile(page)), /Next-day appointments are often available/, `${page} should state qualified next-day availability`);
   }
 
+  const capeCod = read(sitePathToFile("/cape-cod-windshield-repair/"));
+  assert.match(capeCod, /<title>Cape Cod Windshield Replacement &amp; Repair \| Shoreline Auto Glass<\/title>/, "Cape Cod title should lead with replacement intent");
+  assert.match(capeCod, /<h1>Cape Cod Windshield Replacement &amp; Repair \| Shoreline Auto Glass<\/h1>/, "Cape Cod H1 should lead with replacement intent");
+  assert.match(capeCod, /Windshield replacement in Hyannis/, "Cape Cod page should include Hyannis service context");
+  assert.match(capeCod, /Windshield replacement in Falmouth/, "Cape Cod page should include Falmouth service context");
+
+  const southCoast = read(sitePathToFile("/south-coast-windshield-repair/"));
+  assert.match(southCoast, /<title>South Coast MA Windshield Replacement &amp; Repair \| Shoreline Auto Glass<\/title>/, "South Coast title should lead with replacement intent");
+  assert.match(southCoast, /<h1>South Coast MA Windshield Replacement &amp; Repair \| Shoreline Auto Glass<\/h1>/, "South Coast H1 should lead with replacement intent");
+  assert.match(southCoast, /Windshield replacement in New Bedford/, "South Coast page should include New Bedford service context");
+
+  const southShore = read(sitePathToFile("/south-shore-windshield-repair/"));
+  assert.match(southShore, /Windshield replacement in Plymouth/, "South Shore page should include Plymouth service context");
+
   for (const page of [
     "/marthas-vineyard-windshield-repair/",
     "/nantucket-windshield-repair/",

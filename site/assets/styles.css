@@ -939,6 +939,23 @@ h3 {
   padding-left: 22px;
 }
 
+.town-service-notes {
+  display: grid;
+  gap: 22px;
+  margin-top: 30px;
+  padding-top: 28px;
+  border-top: 1px solid rgba(188, 210, 226, 0.82);
+}
+
+.town-service-notes h3 {
+  margin-bottom: 8px;
+  font-size: 1.18rem;
+}
+
+.town-service-notes p:last-child {
+  margin-bottom: 0;
+}
+
 .local-list {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
