@@ -3,6 +3,7 @@ import { execFileSync } from "node:child_process";
 const baseUrl = (process.env.SITE_URL || "https://www.shorelineglassco.com").replace(/\/$/, "");
 const paths = [
   "/",
+  "/next-day-windshield-replacement/",
   "/cape-cod-windshield-repair/",
   "/south-coast-windshield-repair/",
   "/south-shore-windshield-repair/",
@@ -20,7 +21,7 @@ const paths = [
   "/assets/main.js?v=20260529b",
   "/assets/analytics.js?v=20260524b",
   "/assets/quote-form.js?v=20260529a",
-  "/assets/styles.css?v=20260612a",
+  "/assets/styles.css?v=20260720a",
   "/insurance-claims",
   "/auto-glass-insurance",
   "/windshield-insurance-claim",
