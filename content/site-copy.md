@@ -26,7 +26,21 @@ We provide convenient, mobile auto glass and windshield replacement services tha
 - Back and Rear Glass: Stationary, slider and power slider back glass can be replaced in as little as 1 - 2 hours.
 - ADAS Calibration: We recalibrate advanced driver assistance systems to help keep safety features working as intended.
 
-Shoreline can mention technician certification, mobile service, ADAS-related work, and the lifetime workmanship warranty on auto glass installations. Avoid unverifiable comparative claims like "best in the region" unless Shoreline has a public award, ranking, or customer proof to support it. Avoid adding same-day service, direct insurance billing, or broader warranty claims unless Shoreline confirms those details.
+Shoreline can mention technician certification, mobile service, ADAS-related work, the lifetime workmanship warranty on auto glass installations, and that next-day appointments are often available. Always qualify fast-service language: timing depends on the exact glass, vehicle requirements, weather, service location, and any ADAS calibration needs. Island timing also depends on routing and ferry access. Do not guarantee same-day or next-day service. Avoid unverifiable comparative claims like "best in the region" unless Shoreline has a public award, ranking, or customer proof to support it. Avoid adding direct insurance billing or broader warranty claims unless Shoreline confirms those details.
+
+## Fast Service SEO Page
+
+Canonical URL: `https://www.shorelineglassco.com/next-day-windshield-replacement/`
+
+Target phrases:
+
+- next-day windshield replacement
+- fast windshield replacement near me
+- mobile windshield replacement near me
+- same-day windshield replacement near me
+- windshield replacement today
+
+The page may answer same-day searches, but it must not promise same-day service. Use the approved language: "Next-day appointments are often available" and "We will confirm the earliest safe appointment." Keep availability qualifications visible near the first call to action.
 
 ## Warranty
 

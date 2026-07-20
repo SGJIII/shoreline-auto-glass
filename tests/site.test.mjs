@@ -9,6 +9,7 @@ const siteDir = path.join(rootDir, "site");
 const individualNamePattern = new RegExp(["bl", "ake|farns", "worth"].join(""), "i");
 const expectedPages = [
   "/",
+  "/next-day-windshield-replacement/",
   "/cape-cod-windshield-repair/",
   "/south-coast-windshield-repair/",
   "/south-shore-windshield-repair/",
@@ -290,6 +291,7 @@ test("critical marketing and trust content is present", () => {
   const adas = read(path.join(siteDir, "adas-calibration", "index.html"));
   const insurance = read(path.join(siteDir, "insurance", "index.html"));
   const warranty = read(path.join(siteDir, "warranty", "index.html"));
+  const fastService = read(path.join(siteDir, "next-day-windshield-replacement", "index.html"));
 
   assert.doesNotMatch(home, /No published Google reviews yet/, "placeholder review copy should not be visible");
   assert.match(home, /ANSI\/AGSC\/AGRSS-certified technician/, "certification trust signal should be on the homepage");
@@ -299,6 +301,13 @@ test("critical marketing and trust content is present", () => {
   assert.match(home, /Installations performed by Shoreline are backed by a <a class="text-link" href="\/warranty\/">lifetime workmanship warranty<\/a>/, "homepage replacement card should mention warranty");
   assert.doesNotMatch(home, individualNamePattern, "homepage should keep technician trust brand-forward");
   assert.match(home, /Tell your insurance company you want Shoreline/, "homepage should promote insurance claim help");
+  assert.match(home, /Next-day appointments are often available/, "homepage should promote qualified next-day availability");
+  assert.match(home, /href=["']\/next-day-windshield-replacement\//, "homepage should link to the fast-service page");
+  assert.match(fastService, /Fast, Next-Day Windshield Replacement/, "fast-service page should have a focused headline");
+  assert.match(fastService, /next-day appointments are often available/i, "fast-service page should state qualified availability");
+  assert.match(fastService, /same-day service cannot be guaranteed/i, "fast-service page should avoid a same-day guarantee");
+  assert.match(fastService, /glass, vehicle, weather, location, and calibration requirements/i, "fast-service page should explain availability limits");
+  assert.match(fastService, /Check next-day availability/, "fast-service page should include a conversion CTA");
   assert.match(fleet, /Fleet ADAS Calibration &amp; Auto Glass/, "fleet page headline should exist");
   assert.match(fleet, /AGSC-certified Shoreline Auto Glass technician/, "fleet page should mention certification");
   assert.match(fleet, /Commercial Windshield Replacement[\s\S]*lifetime workmanship warranty/, "fleet page should mention warranty for commercial windshield replacement");
@@ -337,6 +346,24 @@ test("critical marketing and trust content is present", () => {
     const region = read(sitePathToFile(page));
     assert.match(region, /lifetime workmanship warranty/, `${page} should mention warranty`);
     assert.match(region, /href=["']\/warranty\//, `${page} should link to warranty`);
+    assert.match(region, /href=["']\/next-day-windshield-replacement\//, `${page} should link to fast-service details`);
+  }
+
+  for (const page of [
+    "/cape-cod-windshield-repair/",
+    "/south-coast-windshield-repair/",
+    "/south-shore-windshield-repair/",
+  ]) {
+    assert.match(read(sitePathToFile(page)), /Next-day appointments are often available/, `${page} should state qualified next-day availability`);
+  }
+
+  for (const page of [
+    "/marthas-vineyard-windshield-repair/",
+    "/nantucket-windshield-repair/",
+  ]) {
+    const island = read(sitePathToFile(page));
+    assert.match(island, /earliest available island service date/, `${page} should use ferry-aware timing language`);
+    assert.match(island, /ferry access/, `${page} should explain island timing constraints`);
   }
 });
 
