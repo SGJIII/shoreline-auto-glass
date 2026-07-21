@@ -1,0 +1,159 @@
+{
+  "version": 1,
+  "business": {
+    "name": "Shoreline Auto Glass",
+    "website": "https://www.shorelineglassco.com/",
+    "domain": "shorelineglassco.com",
+    "phone": "(774) 560-8440",
+    "email": "info@shorelineglassco.com",
+    "reviewUrl": "https://g.page/r/CUki0l1Gt5-FEBI/review"
+  },
+  "discovery": {
+    "overpassEndpoints": [
+      "https://overpass-api.de/api/interpreter",
+      "https://overpass.kumi.systems/api/interpreter"
+    ],
+    "maxProspects": 30,
+    "timeoutMs": 75000
+  },
+  "serviceHubs": [
+    {
+      "name": "Hyannis and Mid-Cape",
+      "region": "Cape Cod",
+      "latitude": 41.6525,
+      "longitude": -70.2881,
+      "radiusMeters": 26000
+    },
+    {
+      "name": "Falmouth and Upper Cape",
+      "region": "Cape Cod",
+      "latitude": 41.5515,
+      "longitude": -70.6148,
+      "radiusMeters": 22000
+    },
+    {
+      "name": "Plymouth",
+      "region": "South Shore",
+      "latitude": 41.9584,
+      "longitude": -70.6673,
+      "radiusMeters": 25000
+    },
+    {
+      "name": "New Bedford",
+      "region": "South Coast",
+      "latitude": 41.6362,
+      "longitude": -70.9342,
+      "radiusMeters": 25000
+    },
+    {
+      "name": "Vineyard Haven",
+      "region": "Martha's Vineyard",
+      "latitude": 41.4543,
+      "longitude": -70.6036,
+      "radiusMeters": 18000
+    },
+    {
+      "name": "Nantucket",
+      "region": "Nantucket",
+      "latitude": 41.2835,
+      "longitude": -70.0995,
+      "radiusMeters": 18000
+    }
+  ],
+  "manualProspects": [
+    {
+      "name": "Cape Cod Chamber of Commerce",
+      "category": "community organization",
+      "region": "Cape Cod",
+      "website": "https://www.capecodchamber.org/",
+      "email": "",
+      "phone": "",
+      "sourceUrl": "https://www.capecodchamber.org/your-chamber/membership/"
+    },
+    {
+      "name": "Cape Cod Canal Region Chamber of Commerce",
+      "category": "community organization",
+      "region": "Cape Cod",
+      "website": "https://www.capecodcanalchamber.org/",
+      "email": "",
+      "phone": "508-759-6000",
+      "sourceUrl": "https://www.capecodcanalchamber.org/"
+    },
+    {
+      "name": "Plymouth Area Chamber of Commerce",
+      "category": "community organization",
+      "region": "South Shore",
+      "website": "https://www.plymouthchamber.com/",
+      "email": "info@plymouthchamber.com",
+      "phone": "508-830-1620",
+      "sourceUrl": "https://www.plymouthchamber.com/"
+    },
+    {
+      "name": "One SouthCoast Chamber",
+      "category": "community organization",
+      "region": "South Coast",
+      "website": "https://onesouthcoast.com/",
+      "email": "",
+      "phone": "",
+      "sourceUrl": "https://onesouthcoast.com/"
+    },
+    {
+      "name": "Martha's Vineyard Chamber of Commerce",
+      "category": "community organization",
+      "region": "Martha's Vineyard",
+      "website": "https://www.mvy.com/",
+      "email": "membership@mvy.com",
+      "phone": "",
+      "sourceUrl": "https://www.mvy.com/chamber/join/"
+    },
+    {
+      "name": "Nantucket Island Chamber of Commerce",
+      "category": "community organization",
+      "region": "Nantucket",
+      "website": "https://www.nantucketchamber.org/",
+      "email": "info@nantucketchamber.org",
+      "phone": "508-228-1700",
+      "sourceUrl": "https://www.nantucketchamber.org/membership-packages/"
+    }
+  ],
+  "citations": [
+    {
+      "name": "Google Business Profile",
+      "profileUrl": "https://g.page/r/CUki0l1Gt5-FEBI/",
+      "claimUrl": "https://business.google.com/"
+    },
+    {
+      "name": "Apple Business Connect",
+      "profileUrl": "",
+      "claimUrl": "https://businessconnect.apple.com/"
+    },
+    {
+      "name": "Bing Places",
+      "profileUrl": "",
+      "claimUrl": "https://www.bingplaces.com/"
+    },
+    {
+      "name": "Yelp for Business",
+      "profileUrl": "",
+      "claimUrl": "https://biz.yelp.com/"
+    },
+    {
+      "name": "Facebook Business Page",
+      "profileUrl": "",
+      "claimUrl": "https://www.facebook.com/pages/create/"
+    },
+    {
+      "name": "Auto Glass Safety Council member listing",
+      "profileUrl": "",
+      "claimUrl": "https://agsc.org/"
+    }
+  ],
+  "knownBacklinks": [],
+  "guardrails": [
+    "Do not create fake reviews or offer incentives in exchange for positive reviews.",
+    "Do not buy links, use automated directory submission networks, or post spun content.",
+    "Do not send outreach automatically. A person must approve each prospect and message.",
+    "Only request links that are useful to customers and accurately describe a real relationship.",
+    "Record every contact in the outreach log so the same organization is not repeatedly contacted."
+  ]
+}

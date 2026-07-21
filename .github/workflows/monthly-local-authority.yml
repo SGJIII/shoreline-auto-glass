@@ -1,0 +1,54 @@
+name: Monthly local authority report
+
+on:
+  schedule:
+    - cron: "17 14 1 * *"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  issues: write
+
+concurrency:
+  group: monthly-local-authority
+  cancel-in-progress: false
+
+jobs:
+  authority-report:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+
+    steps:
+      - name: Check out site
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: Run tests
+        run: npm test
+
+      - name: Build local authority report
+        run: npm run seo:authority
+
+      - name: Upload report files
+        uses: actions/upload-artifact@v4
+        with:
+          name: shoreline-local-authority-${{ github.run_id }}
+          path: reports/seo-authority/
+          if-no-files-found: error
+          retention-days: 90
+
+      - name: Create or refresh this month's approval issue
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          TITLE="SEO authority report - $(date -u +%Y-%m)"
+          ISSUE_NUMBER="$(gh issue list --state open --limit 100 --json number,title --jq ".[] | select(.title == \"$TITLE\") | .number" | head -n 1)"
+          if [ -n "$ISSUE_NUMBER" ]; then
+            gh issue edit "$ISSUE_NUMBER" --body-file reports/seo-authority/monthly-report.md
+          else
+            gh issue create --title "$TITLE" --body-file reports/seo-authority/monthly-report.md
+          fi

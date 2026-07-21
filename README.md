@@ -24,6 +24,8 @@ Static lead-generation website for `www.shorelineglassco.com`.
 - `netlify.toml` and `_redirects` - Netlify deploy configuration.
 - `docs/` - manager and deployment handoff notes.
 - `content/site-copy.md` - plain-English copy reference for maintainers.
+- `tools/local-authority-bot.mjs` - monthly local citation, backlink, and partnership opportunity audit.
+- `.github/workflows/monthly-local-authority.yml` - free monthly GitHub Actions schedule for the authority report.
 
 ## Deployment target
 
@@ -103,3 +105,13 @@ Do not test-submit real customer data unless Shoreline approves that test.
 Google Analytics 4 is installed with measurement ID `G-HD12WQSBNM`. Event tracking lives in `site/assets/analytics.js`.
 
 The homepage reviews section displays the Common Ninja review widget only, using component ID `992c7252-797d-48aa-a2b2-3b868ca1c341`. Keep the widget configured to show stars and review text without reviewer photos.
+
+## Monthly local authority bot
+
+Run the citation, backlink, and partnership opportunity audit with:
+
+```bash
+npm run seo:authority
+```
+
+The GitHub Actions workflow runs on the first day of each month and opens or refreshes a GitHub issue containing the approval queue. Generated report files are uploaded as workflow artifacts. See `docs/local-authority-bot.md` for configuration, operating rules, and optional Google API integrations.
