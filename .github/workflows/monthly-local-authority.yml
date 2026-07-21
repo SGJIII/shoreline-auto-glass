@@ -1,6 +1,13 @@
 name: Monthly local authority report
 
 on:
+  push:
+    branches:
+      - main
+    paths:
+      - ".github/workflows/monthly-local-authority.yml"
+      - "config/seo-authority.json"
+      - "tools/local-authority-bot.mjs"
   schedule:
     - cron: "17 14 1 * *"
   workflow_dispatch:

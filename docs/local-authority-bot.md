@@ -31,6 +31,8 @@ OpenStreetMap data is discovery evidence, not an endorsement. A person must veri
 
 `.github/workflows/monthly-local-authority.yml` runs at 14:17 UTC on the first day of every month. It can also be started manually from GitHub under Actions, then Monthly local authority report, then Run workflow.
 
+The workflow also runs when its bot code, workflow definition, or configuration changes on `main`. This validates changes immediately and refreshes the current month's issue without waiting for the next scheduled run.
+
 ## Run locally
 
 ```bash
